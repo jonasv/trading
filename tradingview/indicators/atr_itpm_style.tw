@@ -1,0 +1,26 @@
+// // ATR - ITPM STYLE
+// // Made in London, UK @2020
+// // Salute to Anton "Morpheus" Kreil for liberaling retail traders!
+// // © hydrus2000
+//@version=4
+study("_ATR (ITPM STYLE)")
+
+
+true_range_x(first_day,second_day) =>
+    fday1_h = security(syminfo.tickerid, "D", high[first_day])
+    fday1_l = security(syminfo.tickerid, "D", low[first_day])
+    fday1_range = fday1_h - fday1_l
+    fday2_h = security(syminfo.tickerid, "D", high[second_day])
+    fday2_l = security(syminfo.tickerid, "D", low[second_day])
+    fday2_range = fday2_h - fday2_l
+    ftrue_range_1d = ((((fday1_range+fday2_range)/2)/open[second_day])*100)
+    
+days_10_atr = avg(true_range_x(0,1),true_range_x(1,2),true_range_x(2,3),true_range_x(3,4),true_range_x(4,5),true_range_x(5,6),true_range_x(6,7),true_range_x(7,8),true_range_x(8,9),true_range_x(9,10))
+plot(days_10_atr, title='10 days', color=#00FF00, linewidth=1, style=plot.style_line)
+
+days_5_atr = avg(true_range_x(0,1),true_range_x(1,2),true_range_x(2,3),true_range_x(3,4),true_range_x(4,5))
+plot(days_5_atr, title='5 days', color=#FFFF00, linewidth=1, style=plot.style_line)
+
+days_1_atr = true_range_x(0,1)
+plot(days_1_atr, title='1 day', color=#FF0000, linewidth=1, style=plot.style_line)
+

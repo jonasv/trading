@@ -1,0 +1,10 @@
+study(title="MA 20, 50 & 200", overlay=true)
+//50MA & 200MA
+short = sma(close, 20)
+medium = sma(close, 50)
+long = sma(close, 200)
+plot(short, color = red, linewidth = 2)
+plot(medium, color = yellow, linewidth = 2)
+plot(long, color = green, linewidth = 2)
+plot(cross(short, long) ? short : na, style = cross, linewidth = 7, color = aqua)
+

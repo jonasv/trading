@@ -1,0 +1,5 @@
+study("EMA 20, 50 & 200", overlay=true)
+plot(ema(close, 20), color=red, linewidth=6, title='20 Day EMA')
+plot(ema(close, 50), color=yellow, linewidth=6, title='50 Day EMA')
+plot(ema(close, 200), color=green, linewidth=6, title='200 Day EMA')
+
