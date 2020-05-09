@@ -1,5 +1,4 @@
 study(title="MA 14, 30 & 90", overlay=true)
-//50MA & 200MA
 short = sma(close, 14)
 medium = sma(close, 30)
 long = sma(close, 90)
