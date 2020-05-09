@@ -1,10 +1,9 @@
-study(title="MA 20, 50 & 200", overlay=true)
+study(title="MA 14, 30 & 90", overlay=true)
 //50MA & 200MA
-short = sma(close, 20)
-medium = sma(close, 50)
-long = sma(close, 200)
-plot(short, color = red, linewidth = 2)
-plot(medium, color = yellow, linewidth = 2)
-plot(long, color = green, linewidth = 2)
-plot(cross(short, long) ? short : na, style = cross, linewidth = 7, color = aqua)
-
+short = sma(close, 14)
+medium = sma(close, 30)
+long = sma(close, 90)
+plot(short, color = red, linewidth = 1)
+plot(medium, color = yellow, linewidth = 1)
+plot(long, color = green, linewidth = 1)
+plot(cross(short, long) ? short : na, style = cross, linewidth = 1, color = aqua)
