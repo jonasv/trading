@@ -1,5 +1,5 @@
-study("EMA 20, 50 & 200", overlay=true)
-plot(ema(close, 20), color=red, linewidth=6, title='20 Day EMA')
-plot(ema(close, 50), color=yellow, linewidth=6, title='50 Day EMA')
-plot(ema(close, 200), color=green, linewidth=6, title='200 Day EMA')
-
+//@version=3
+study("EMA 14, 30 & 90", overlay=true)
+plot(ema(close, 14), color=red, style=stepline, linewidth=2, title='14 Day EMA')
+plot(ema(close, 30), color=yellow, style=stepline, linewidth=2, title='30 Day EMA')
+plot(ema(close, 90), color=green, style=stepline, linewidth=2, title='90 Day EMA')
