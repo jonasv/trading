@@ -26,4 +26,3 @@ hv = 100 * stdev(log(close / close[1]), length) * sqrt(annual / per)
 plot(NormalizedIndicator,color=#ffff00,transp=0,linewidth=1,title="IV")
 plot(hv, "HV", color=#00ff00)
 
-
