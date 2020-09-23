@@ -1,4 +1,5 @@
 //@version=4
+// Historical (green) & Implied (yellow) volatility when timeframe is set to D (day)
 study(title="H/I V")
 //Ichimoku
 Tenkansen = (highest(high,9)+lowest(low,9))/2
