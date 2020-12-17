@@ -1,0 +1,9 @@
+// // Simple moving average on steroids 21, 10, 5, and 2 days (252 trading days / 12 equals 21 trading days per month)
+// // © hydrus2000
+//@version=4
+study("_SMAOS 21/10/5/2")
+
+plot(sma(close, 21), title='21 days', color=#00ebff, linewidth=1, style=plot.style_line, transp=50)
+plot(sma(close, 10), title='10 days', color=#00FF00, linewidth=1, style=plot.style_line, transp=50)
+plot(sma(close, 5), title='5 days', color=#FFFF00, linewidth=1, style=plot.style_line, transp=50)
+plot(sma(close, 2), title='2 days', color=#FF0000, linewidth=1, style=plot.style_line, transp=50)
