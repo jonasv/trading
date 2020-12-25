@@ -1,28 +1,7 @@
 //@version=4
-// Historical (green) & Implied (yellow) volatility when timeframe is set to D (day)
-study(title="H/I V")
-//Ichimoku
-Tenkansen = (highest(high,9)+lowest(low,9))/2
-Kijunsen = (highest(high,26)+lowest(low,26))/2
-FutureSpanA = (Tenkansen+Kijunsen)/2
-FutureSpanB = (highest(high,52)+lowest(low,52))/2
-
-//Implied volatility based on Kumo thickness
-Kumodepth = abs(FutureSpanA - FutureSpanB)
-
-//Normalize implied volatility
-Indicator = Kumodepth
-AverageIndicator = sma(Indicator,200)
-StandardDeviation = stdev(Indicator,200)
-UpperBand = AverageIndicator + (2 * StandardDeviation)
-LowerBand = AverageIndicator - (2 * StandardDeviation)
-NormalizedIndicator  = ((Indicator - LowerBand) / (UpperBand - LowerBand)) * 100
-
+study(title="Historical Volatility", shorttitle="HV", precision=0, format=format.price,  resolution="", overlay=false)
 length = input(10, minval=1)
 annual = 365
 per = timeframe.isintraday or timeframe.isdaily and timeframe.multiplier == 1 ? 1 : 7
 hv = 100 * stdev(log(close / close[1]), length) * sqrt(annual / per)
-
-plot(NormalizedIndicator,color=#ffff00,transp=0,linewidth=1,title="IV")
 plot(hv, "HV", color=#00ff00)
-
