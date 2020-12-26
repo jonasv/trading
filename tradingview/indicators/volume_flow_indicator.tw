@@ -1,8 +1,12 @@
 // VOLUME FLOW indicator
-
-//
-// @author LazyBear
-
+// When VFI is above zero this denotes a bullish condition. (Trend definition)
+// When VFI is below zero this denotes a bearish condition. (Trend definition)
+// As a divergences indicator,It can be in the usual way as one would use other oscillators such as Demand Index or Money Flow MFI and Qstick indicators    
+// One use not highlighted by most texts is the use of "V" formations in VFI which when highly correlated with the price of flag up the trend turning points in a timely manner. These observations are best when a dramatic rise of fall in the price and the VFI precede the V formation.
+// Topping and bottoming patterns such as head and shoulders and double tops which form in the VFI often herald a trend reversal in the underlying instrument before it shows in the actual price. See images below.
+// As an overbought or oversold oscillator in the same way as RSI would be used.
+// IMPORTANT NOTE When an extreme high reading ( overbought ) is observed on the VFI it can often be an early warning to herald a major uptrend is starting and traders entering short on these readings must exercise extreme caution.
+// Obviously the same applies vice versa when extreme oversold readings occur.
 
 study(title = "Volume Flow", shorttitle="VOLUME FLOW")
 
@@ -33,4 +37,3 @@ showHisto=input(false, type=bool)
 plot(showHisto ? d : na, style=histogram, color=gray, linewidth=3, transp=50)
 plot( vfima , title="EMA of vfi", color=orange)
 plot( vfi, title="vfi", color=green,linewidth=2)
-
