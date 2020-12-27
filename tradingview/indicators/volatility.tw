@@ -4,4 +4,4 @@ length = input(10, minval=1)
 annual = 365
 per = timeframe.isintraday or timeframe.isdaily and timeframe.multiplier == 1 ? 1 : 7
 hv = 100 * stdev(log(close / close[1]), length) * sqrt(annual / per)
-plot(hv, "HV", color=#00ff00)
+plot(hv, "HV", color=#ffe400)
