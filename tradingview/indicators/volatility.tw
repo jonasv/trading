@@ -1,5 +1,5 @@
 //@version=4
-study(title="Historical Volatility", shorttitle="HV/IVP", precision=0, format=format.price,  resolution="", overlay=false)
+study(title="Historical Volatility & Implied Volatility Percentile", shorttitle="HV/IV%", precision=0, format=format.price,  resolution="", overlay=false)
 hvlength = input(5, minval=1)
 annual = 365
 per = timeframe.isintraday or timeframe.isdaily and timeframe.multiplier == 1 ? 1 : 7
@@ -23,6 +23,6 @@ for i = 1 to length
     
 ivPercentile = round(count/length*100)
 
-plot(hv, "HV/IVP", color=color.green) // Historical Volatility / Implied Volatility Percentile
+plot(hv, "HV/IV%", color=color.green) // Historical Volatility / Implied Volatility Percentile
 plot(series=iff(timeframe.isdwm,ivPercentile,na), color=color.yellow)
 // DEBUG/Validate the IV: plot(annualizedVolatility*100, color=color.purple)
