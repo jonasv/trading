@@ -12,8 +12,8 @@ dev = mult * stdev(src, length)
 upper = basis + dev
 lower = basis - dev
 offset = input(0, "Offset", type = input.integer, minval = -500, maxval = 500)
-plot(upper, "Upper", color=#FF0000, offset = offset, linewidth=2)
+plot(upper, "Upper", color=#00FF00, offset = offset, linewidth=2)
 plot(basis, "Mean", color=#FFFF00, offset = offset, linewidth=2)
-plot(lower, "Lower", color=#00FF00, offset = offset, linewidth=2)
-// fill(p1, p2, title = "Background", color=#198787, transp=95)
+plot(lower, "Lower", color=#FF0000, offset = offset, linewidth=2)
+
 
