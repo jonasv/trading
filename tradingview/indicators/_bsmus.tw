@@ -1,0 +1,125 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © SegaRKO
+// Black-Scholes Model for American options
+//@version=4
+study("BSMUS", precision=10)
+S=close
+K=input(126.25,minval=0.0001,title="Your Strike Price")
+D1=input(0.205, minval=0.000000, title="Next Dividend")
+t1=input(32, title="Days until Ex-Dividend 1")
+D2=input(0.205, minval=0.000000, title="Next Furthest Dividend")
+t2=input(126, title="Days until Ex-Dividend 2")
+
+riskfreerate=input(title="Option Base Currency",defval="USD", options=["USD","GBP","JPY","CAD","CNH","SGD","INR","AUD","SEK","NOK","DKK"])
+
+Bond_Yield= if riskfreerate=="USD"
+    "US10Y"
+else if riskfreerate=="GBP"
+    "GB10Y"
+else if riskfreerate=="JPY"
+    "JP10Y"
+else if riskfreerate=="CAD"
+    "CA10Y"
+else if riskfreerate=="CNH"
+    "CN10Y"
+else if riskfreerate=="SGD"
+    "SG10Y"
+else if riskfreerate=="INR"
+    "IN10Y"
+else if riskfreerate=="AUD"
+    "AU10Y"
+else if riskfreerate=="SEK"
+    "SE10Y"
+else if riskfreerate=="NOK"
+    "NO10Y"
+else if riskfreerate=="DKK"
+    "DK10Y"
+r=security(Bond_Yield,timeframe.period,S)/100
+Minutes = input(0, title="Minutes until expiry")
+Hours = input(0, title="Hours until expiry")*60
+Days = input(102, minval=0, title="Days until expiry")+((Hours+Minutes)/1440)
+sigma=input(0.000,"Implied Volatility %")/100
+
+len=365
+T = Days/len
+//American Option Method 1. This calculates the price of an option that expires upon expiry.
+PV1=(D1*exp(-(r)*(t1/len)))+(D2*exp(-(r)*(t2/len)))
+discount1=S-PV1
+d1=(log(discount1/K)+(r+pow(sigma,2)/2)*T)/(sigma*sqrt(T))
+d2=d1-(sigma*sqrt(T))
+
+//American Option Method 2. This calculates the price of an option that expires on the t2 date.
+PV2=(D1*exp(-(r)*(t1/len)))
+discount2=S-PV2
+ad1=(log(discount2/K)+(r+pow(sigma,2)/2)*(t2/len))/(sigma*sqrt(t2/len))
+ad2=ad1-(sigma*sqrt(t2/len))
+
+//Gaussian Probability Function with mean 0.0 and stdev 1.0 at given parameter
+phi(x)=>
+    exp(-x * x / 2.0) / sqrt(2*3.14159265359)
+
+//Gaussian Probability Function with mean and stdev at given parameter 
+pdf(x)=>
+    mu=0.0
+    pdf_sigma=1.0
+    phi((x - mu) / pdf_sigma) / pdf_sigma
+
+//Gaussian Distribution function with mean 0.0 and stdev 1.0 at given parameter
+Phi(z) =>
+    total = 0.0
+    term=z
+    for i=3 to 300 by 2 
+        if total!=(total+term)
+            total:=total+term
+            term:=term*(z*z/float(i))
+            continue
+        else
+            break
+    if z<-8.0
+        0.0
+    else if z>8.0
+        1.0
+    else
+        0.5+total*phi(z)
+
+//Standard Guassian Cumulative Distribution Function
+cdf(z)=>
+    mu=0.0
+    cdf_sigma=1.0
+    Phi((z - mu) / cdf_sigma) 
+
+
+Nd1=cdf(d1)
+Nd2=cdf(d2)
+Nad1=cdf(ad1)
+Nad2=cdf(ad2)
+
+//American Vanilla Call
+AmerCall1=discount1*Nd1-K*exp(-r*T)*Nd2
+AmerCall2=discount2*Nad1-K*exp(-r*(t2/len))*Nad2
+AmerCall= if AmerCall1<AmerCall2
+    AmerCall2
+else
+    AmerCall1
+
+//American Vanilla Put
+AmerPut1=K*exp(-r*T)*(1-Nd2)-discount1*(1-Nd1)
+AmerPut2=K*exp(-r*(t2/len))*(1-Nad2)-discount2*(1-Nad1)
+AmerPut= if AmerPut1<AmerPut2
+    AmerPut2
+else
+    AmerPut1
+
+type= input(title="Type of Option", defval="Long Call", options=["Long Call", "Long Put"])
+
+AmerPrice=if type=="Long Put"
+    AmerPut
+else
+    AmerCall
+
+if AmerPrice<0.0
+    AmerPrice:=0.0
+else
+    AmerPrice
+//Plot Arguments
+plot(AmerPrice, title="Theoretical Option Value")
