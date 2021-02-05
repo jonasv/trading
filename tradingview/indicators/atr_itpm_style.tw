@@ -24,4 +24,4 @@ days_5_atr = avg(true_range_x(0,1),true_range_x(1,2),true_range_x(2,3),true_rang
 plot(days_5_atr, title='5 days', color=#FFFF00, linewidth=1, style=plot.style_line, transp=50)
 
 days_1_atr = true_range_x(0,1)
-plot(days_1_atr, title='1 day', color=#FF0000, linewidth=1, style=plot.style_line, transp=50)
+plot(days_1_atr, title='1 day', color=#FF0000, linewidth=1, style=plot.style_line, transp=0)
