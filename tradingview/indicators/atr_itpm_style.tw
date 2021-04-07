@@ -1,6 +1,5 @@
 // // ATR - ITPM STYLE
 // // Made in London, UK @2020
-// // Salute to Anton "Morpheus" Kreil for liberaling retail traders!
 // // In order for ATR ITPM STYLE to work - you need to select candles (but not heikin ashi ones, because otherwise numbers are incorrect provided by atr) and try to validate results in TW from time to time
 // // with excel spreadsheet to make sure numbers are correct.
 // // © hydrus2000
