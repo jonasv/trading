@@ -1,6 +1,6 @@
 // Custom Bollinger bands
 // How to read/interpret:
-// In low vol increase input, in high vol - decrease. Middle vol around 10 days+-
+// In low vol increase input, in high vol - decrease. Middle vol from 20 to 60 days (1 to 3 months)
 // Pay attention that STD is 2 by default, but it is not always the case as STD (standard deviation) 1 (one) should be used in low to very low cases
 //@version=4
 study(shorttitle="BB", title="Bollinger Bands", overlay=true, resolution="")
