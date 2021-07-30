@@ -1,9 +1,9 @@
-// // ATR - ITPM STYLE
-// // Made in London, UK @2020
-// // Salute to Anton "Morpheus" Kreil for liberaling retail traders!
-// // In order for ATR ITPM STYLE to work - you need to select candles (but not heikin ashi ones, because otherwise numbers are incorrect provided by atr) and try to validate results in TW from time to time
-// // with excel spreadsheet to make sure numbers are correct.
-// // © hydrus2000
+// ATR - ITPM STYLE
+// Made in London, UK @2020
+// Salute to Anton "Morpheus" Kreil for liberaling retail traders!
+// In order for ATR ITPM STYLE to work - you need to select candles (but not heikin ashi ones, because otherwise numbers are incorrect provided by atr)
+// and try to validate results in TW from time to time with excel spreadsheet to make sure numbers are correct.
+// © hydrus2000
 //@version=4
 study("_ATR 10/5/1 (ITPM STYLE) & A/B")
 
@@ -27,6 +27,34 @@ days_1_atr = true_range_x(0,1)
 plot(days_1_atr, title='1 day', color=#FF0000, linewidth=1, style=plot.style_line, transp=0)
 
 // A/B code
+//SHOULD BE USED TOGETHER WITH "Alpha" INDICATOR WHEN INTERPRETING
+// Quick explanation: alpha = asset performance compared to the market. Beta = asset volatility compared to the market.
+// Alpha
+// Positive number (for example 0.01 means 1% here in this indicator), that means asset is outperforming market or S&P500 over given period
+// Negative number (for example -0.01 means -1% here in this indicator), that means asset is underperforming market or S&P500 over given period
+// Alpha is a measure of the active return on an investment, the performance of that investment compared with a suitable market index. 
+// An alpha of 1% means the investment's return on investment over a selected period of time was 1% better than the market during that same period;
+// a negative alpha means the investment underperformed the market. Alpha, along with beta, is one of two key coefficients in the capital asset pricing model 
+// used in modern portfolio theory and is closely related to other important quantities such as standard deviation, R-squared and the Sharpe ratio.
+// In modern financial markets, where index funds are widely available for purchase, alpha is commonly used to judge the performance of mutual
+// funds and similar investments. As these funds include various fees normally expressed in percent terms, the fund has to maintain an alpha greater 
+// than its fees in order to provide positive gains compared with an index fund. Historically, the vast majority of traditional funds have had negative 
+// alphas, which has led to a flight of capital to index funds and non-traditional hedge funds.
+// It is also possible to analyze a portfolio of investments and calculate a theoretical performance, most commonly using the capital asset pricing model (CAPM). 
+// Returns on that portfolio can be compared with the theoretical returns, in which case the measure is known as Jensen's alpha. This is useful for non-traditional
+// or highly focused funds, where a single stock index might not be representative of the investment's holdings.
+// https://en.wikipedia.org/wiki/Alpha_(finance)
+// Beta
+// beta (β or beta coefficient) of an investment indicates whether the investment is more or less volatile than the market. 
+// In general, a beta less than 1 indicates that the investment is less volatile than the market,
+// while a beta more than 1 indicates that the investment is more volatile than the market. Volatility is measured as the fluctuation of the price around the mean.
+// Beta is a measure of the risk arising from exposure to general market movements as opposed to idiosyncratic factors. 
+// The market portfolio of all investable assets has a beta of exactly 1 (here the S&P500). A beta below 1 can indicate either an investment with lower volatility than the market, 
+// or a volatile investment whose price movements are not highly correlated with the market. 
+// An example of the first is a treasury bill: the price does not go up or down a lot, so it has a low beta. 
+// An example of the second is gold. The price of gold does go up and down a lot, but not in the same direction or at the same time as the market
+// https://en.wikipedia.org/wiki/Beta_(finance)
+
 sym = "SPX500"
 res = timeframe.period
 src = close
@@ -44,5 +72,5 @@ retb2 = (ovr - ovr[y]) / ovr
 alpha = ret2 - retb2 * Beta
 
 
-plot(alpha, transp=0, color=#ff00ff)
-plot(Beta, transp=0, color=#ff8000)
+plot(alpha, title='Alpha', transp=0, color=#ff00ff)
+plot(Beta, title='Beta', transp=0, color=#ff8000)
