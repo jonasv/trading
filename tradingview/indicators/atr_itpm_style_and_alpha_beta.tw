@@ -1,12 +1,13 @@
 // // ATR - ITPM STYLE
 // // Made in London, UK @2020
+// // Salute to Anton "Morpheus" Kreil for liberaling retail traders!
 // // In order for ATR ITPM STYLE to work - you need to select candles (but not heikin ashi ones, because otherwise numbers are incorrect provided by atr) and try to validate results in TW from time to time
 // // with excel spreadsheet to make sure numbers are correct.
 // // © hydrus2000
 //@version=4
-study("_ATR (ITPM STYLE)")
+study("_ATR 10/5/1 (ITPM STYLE) & A/B")
 
-
+// ATR code
 true_range_x(first_day,second_day) =>
     fday1_h = security(syminfo.tickerid, "D", high[first_day])
     fday1_l = security(syminfo.tickerid, "D", low[first_day])
@@ -24,3 +25,24 @@ plot(days_5_atr, title='5 days', color=#FFFF00, linewidth=1, style=plot.style_li
 
 days_1_atr = true_range_x(0,1)
 plot(days_1_atr, title='1 day', color=#FF0000, linewidth=1, style=plot.style_line, transp=0)
+
+// A/B code
+sym = "SPX500"
+res = timeframe.period
+src = close
+length = input(title="rolling beta window", defval=300, minval=1)
+ovr = security(sym, res, src)
+ret = (close - close[1]) / close
+retb = (ovr - ovr[1]) / ovr
+secd = stdev(ret, length)
+mktd = stdev(retb, length)
+Beta = correlation(ret, retb, length) * secd / mktd
+
+y = input(title="alpha period", type=input.integer, defval=90, minval=1, maxval=1000)
+ret2 = (close - close[y]) / close
+retb2 = (ovr - ovr[y]) / ovr
+alpha = ret2 - retb2 * Beta
+
+
+plot(alpha, transp=0, color=#ff00ff)
+plot(Beta, transp=0, color=#ff8000)
