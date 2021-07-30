@@ -4,7 +4,7 @@
 // Pay attention that STD is 2 by default, but it is not always the case as STD (standard deviation) 1 (one) should be used in low to very low cases
 //@version=4
 study(shorttitle="BB", title="Bollinger Bands", overlay=true, resolution="")
-length = input(10, minval=1)
+length = input(20, minval=1)
 src = input(close, title="Source")
 mult = input(2.0, minval=0.001, maxval=50, title="StdDev")
 basis = sma(src, length)
