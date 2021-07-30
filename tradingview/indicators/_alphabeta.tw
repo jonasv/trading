@@ -26,6 +26,8 @@ study(title="Alpha/Beta", overlay=true)
 //An example of the second is gold. The price of gold does go up and down a lot, but not in the same direction or at the same time as the market
 //https://en.wikipedia.org/wiki/Beta_(finance)
 
+// Additional info:
+// According to Anton, if beta ratio is above 2, probably this is not worth pursuing due to short side being extremely capital hungry. (video 23, 40min+)
 sym = "SPX500", res=period, src = close, length = input(title="rolling beta window",defval=300, minval=1)
 ovr = security(sym, res, src)
 ret = ((close - close[1])/close)
