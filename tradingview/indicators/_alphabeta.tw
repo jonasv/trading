@@ -41,4 +41,4 @@ alpha = ret2 - retb2*Beta
 
 
 plot(alpha, transp=100, color=#ff00ff)
-plot(Beta, transp=100, color=#e0e0e0)
+plot(Beta, transp=100, color=#ff8000)
