@@ -16,6 +16,20 @@ study(title="Sector Alpha", shorttitle="Sector Alpha (%)")
 // The Sensitive super sector also has four sectors:
 // Communication Services, Energy, Industrials, Technology.
 
+// XLB - Materials
+// XLC - Communications
+// XLE - Energy
+// XLF - Financials
+// XLI - Industrials
+// XLK - Technology
+// XLP - Consumer staples
+// XLRE - REIT
+// XLU - Utilities
+// XLV - Health Care
+// XLY - Consumer Discretionary
+// XME - Metals & Mining
+
+
 //Beta Calculation
 sym = "SPY", res=period, src = close, length = input(title = "Beta Window", defval=300, minval=1)
 ovr = security(sym, res, src)
@@ -53,6 +67,9 @@ ovr11 = security(sym11, res, src)
 sym12 = "XLRE"
 ovr12 = security(sym12, res, src)
 
+sym13 = "XME"
+ovr13 = security(sym13, res, src)
+
 //////////////////////////////////////////    FINANCIALS
 
 retxlf = log(ovr2) - log(ovr2[1])
@@ -65,118 +82,8 @@ y = input(title="alpha period", type=integer, defval=90, minval=1, maxval=1000)
 retxlf2 = log(ovr2) - log(ovr2[y])
 retb2 = log(ovr) - log(ovr[y])
 alphaxlf = retxlf2 - retb2*Betaxlf
-plot(alphaxlf*100, color=green, style=line, transp=40, title='Financials')
+plot(alphaxlf*100, color=green, style=line, transp=0, title='Financials')
 
-//////////////////////////////////////////    TECHNOLOGY
-
-retxlk = log(ovr3) - log(ovr3[1])
-secdxlk = stdev(retxlk, length)
-Betaxlk = correlation(retxlk, retb, length) * secdxlk / mktd
-
-//Alpha Calculation
-
-retxlk3 = log(ovr3) - log(ovr3[y])
-alphaxlk = retxlk3 - retb2*Betaxlk
-plot(alphaxlk*100, color=#0053ff, style=line, transp=25, title='Technology')
-
-//////////////////////////////////////////    INDUSTRIALS
-
-retxli = log(ovr4) - log(ovr4[1])
-secdxli = stdev(retxli, length)
-Betaxli = correlation(retxli, retb, length) * secdxli / mktd
-
-//Alpha Calculation
-
-retxli3 = log(ovr4) - log(ovr4[y])
-alphaxli = retxli3 - retb2*Betaxli
-plot(alphaxli*100, color=aqua, style=line, transp=40, title='Industrials')
-
-
-//////////////////////////////////////////    MATERIALS
-
-retxlb = log(ovr5) - log(ovr5[1])
-secdxlb = stdev(retxlb, length)
-Betaxlb = correlation(retxlb, retb, length) * secdxlb / mktd
-
-//Alpha Calculation
-
-retxlb2 = log(ovr5) - log(ovr5[y])
-alphaxlb = retxlb2 - retb2*Betaxlb
-plot(alphaxlb*100, color=gray, style=line, transp=0, title='Materials')
-
-//////////////////////////////////////////    HEALTHCARE
-
-retxlv = log(ovr6) - log(ovr6[1])
-secdxlv = stdev(retxlv, length)
-Betaxlv = correlation(retxlv, retb, length) * secdxlv / mktd
-
-//Alpha Calculation
-
-retxlv2 = log(ovr6) - log(ovr6[y])
-alphaxlv = retxlv2 - retb2*Betaxlv
-plot(alphaxlv*100, color=red, style=line, transp=40, title='Healthcare')
-
-
-//////////////////////////////////////////    UTILITIES
-
-retxlu = log(ovr7) - log(ovr7[1])
-secdxlu = stdev(retxlu, length)
-Betaxlu = correlation(retxlu, retb, length) * secdxlu / mktd
-
-//Alpha Calculation
-
-retxlu2 = log(ovr7) - log(ovr7[y])
-alphaxlu = retxlu2 - retb2*Betaxlu
-plot(alphaxlu*100, color=orange, style=line, transp=60, title='Utilities')
-
-//////////////////////////////////////////    ENERGY
-
-retxle = log(ovr8) - log(ovr8[1])
-secdxle = stdev(retxle, length)
-Betaxle = correlation(retxle, retb, length) * secdxle / mktd
-
-//Alpha Calculation
-
-retxle2 = log(ovr8) - log(ovr8[y])
-alphaxle = retxle2 - retb2*Betaxle
-plot(alphaxle*100, color=fuchsia, style=line, transp=40, title='Energy')
-
-//////////////////////////////////////////    CONSUMER STAPLES
-
-retxlp = log(ovr9) - log(ovr9[1])
-secdxlp = stdev(retxlp, length)
-Betaxlp = correlation(retxlp, retb, length) * secdxlp / mktd
-
-//Alpha Calculation
-
-retxlp2 = log(ovr9) - log(ovr9[y])
-alphaxlp = retxlp2 - retb2*Betaxlp
-plot(alphaxlp*100, color=#e65100, style=line, transp=10, title='C Staples')
-
-
-//////////////////////////////////////////    CONSUMER DISCRETIONARY
-
-retxly = log(ovr10) - log(ovr10[1])
-secdxly = stdev(retxly, length)
-Betaxly = correlation(retxly, retb, length) * secdxly / mktd
-
-//Alpha Calculation
-
-retxly2 = log(ovr10) - log(ovr10[y])
-alphaxly = retxly2 - retb2*Betaxly
-plot(alphaxly*100, color=olive, style=line, transp=10, linewidth=1, title='C Discretionary')
-
-//////////////////////////////////////////    COMMUNICATIONS
-
-retxlc = log(ovr11) - log(ovr11[1])
-secdxlc = stdev(retxlc, length)
-Betaxlc = correlation(retxlc, retb, length) * secdxlc / mktd
-
-//Alpha Calculation
-
-retxlc2 = log(ovr11) - log(ovr11[y])
-alphaxlc = retxlc2 - retb2*Betaxlc
-plot(alphaxlc*100, color=#00ff0b, style=line, transp=36, linewidth=1, title='Communications')
 
 //////////////////////////////////////////    REIT
 
@@ -189,6 +96,127 @@ Betaxlre = correlation(retxlre, retb, length) * secdxlre / mktd
 retxlre2 = log(ovr12) - log(ovr12[y])
 alphaxlre = retxlre2 - retb2*Betaxlre
 plot(alphaxlre*100, color=#a0a4ad, style=line, transp=0, linewidth=1, title='REIT')
+
+//////////////////////////////////////////    MATERIALS
+
+retxlb = log(ovr5) - log(ovr5[1])
+secdxlb = stdev(retxlb, length)
+Betaxlb = correlation(retxlb, retb, length) * secdxlb / mktd
+
+//Alpha Calculation
+
+retxlb2 = log(ovr5) - log(ovr5[y])
+alphaxlb = retxlb2 - retb2*Betaxlb
+plot(alphaxlb*100, color=#ffeb3b, style=line, transp=0, title='Materials')
+
+//////////////////////////////////////////    CONSUMER DISCRETIONARY
+
+retxly = log(ovr10) - log(ovr10[1])
+secdxly = stdev(retxly, length)
+Betaxly = correlation(retxly, retb, length) * secdxly / mktd
+
+//Alpha Calculation
+
+retxly2 = log(ovr10) - log(ovr10[y])
+alphaxly = retxly2 - retb2*Betaxly
+plot(alphaxly*100, color=olive, style=line, transp=0, linewidth=1, title='C Discretionary')
+
+//////////////////////////////////////////    Metals & Mining
+
+retxme = log(ovr13) - log(ovr13[1])
+secdxme = stdev(retxme, length)
+Betaxme = correlation(retxme, retb, length) * secdxme / mktd
+
+//Alpha Calculation
+
+retxme2 = log(ovr13) - log(ovr13[y])
+alphaxme = retxme2 - retb2*Betaxme
+plot(alphaxme*100, color=#f06292, style=line, transp=0, linewidth=1, title='Metals & Mining')
+
+//////////////////////////////////////////    TECHNOLOGY
+
+retxlk = log(ovr3) - log(ovr3[1])
+secdxlk = stdev(retxlk, length)
+Betaxlk = correlation(retxlk, retb, length) * secdxlk / mktd
+
+//Alpha Calculation
+
+retxlk3 = log(ovr3) - log(ovr3[y])
+alphaxlk = retxlk3 - retb2*Betaxlk
+plot(alphaxlk*100, color=#0053ff, style=line, transp=0, title='Technology')
+
+//////////////////////////////////////////    INDUSTRIALS
+
+retxli = log(ovr4) - log(ovr4[1])
+secdxli = stdev(retxli, length)
+Betaxli = correlation(retxli, retb, length) * secdxli / mktd
+
+//Alpha Calculation
+
+retxli3 = log(ovr4) - log(ovr4[y])
+alphaxli = retxli3 - retb2*Betaxli
+plot(alphaxli*100, color=aqua, style=line, transp=0, title='Industrials')
+
+//////////////////////////////////////////    ENERGY
+
+retxle = log(ovr8) - log(ovr8[1])
+secdxle = stdev(retxle, length)
+Betaxle = correlation(retxle, retb, length) * secdxle / mktd
+
+//Alpha Calculation
+
+retxle2 = log(ovr8) - log(ovr8[y])
+alphaxle = retxle2 - retb2*Betaxle
+plot(alphaxle*100, color=fuchsia, style=line, transp=0, title='Energy')
+
+//////////////////////////////////////////    COMMUNICATIONS
+
+retxlc = log(ovr11) - log(ovr11[1])
+secdxlc = stdev(retxlc, length)
+Betaxlc = correlation(retxlc, retb, length) * secdxlc / mktd
+
+//Alpha Calculation
+
+retxlc2 = log(ovr11) - log(ovr11[y])
+alphaxlc = retxlc2 - retb2*Betaxlc
+plot(alphaxlc*100, color=#00ff0b, style=line, transp=0, linewidth=1, title='Communications')
+
+//////////////////////////////////////////    HEALTHCARE
+
+retxlv = log(ovr6) - log(ovr6[1])
+secdxlv = stdev(retxlv, length)
+Betaxlv = correlation(retxlv, retb, length) * secdxlv / mktd
+
+//Alpha Calculation
+
+retxlv2 = log(ovr6) - log(ovr6[y])
+alphaxlv = retxlv2 - retb2*Betaxlv
+plot(alphaxlv*100, color=red, style=line, transp=0, title='Healthcare')
+
+
+//////////////////////////////////////////    UTILITIES
+
+retxlu = log(ovr7) - log(ovr7[1])
+secdxlu = stdev(retxlu, length)
+Betaxlu = correlation(retxlu, retb, length) * secdxlu / mktd
+
+//Alpha Calculation
+
+retxlu2 = log(ovr7) - log(ovr7[y])
+alphaxlu = retxlu2 - retb2*Betaxlu
+plot(alphaxlu*100, color=orange, style=line, transp=0, title='Utilities')
+
+//////////////////////////////////////////    CONSUMER STAPLES
+
+retxlp = log(ovr9) - log(ovr9[1])
+secdxlp = stdev(retxlp, length)
+Betaxlp = correlation(retxlp, retb, length) * secdxlp / mktd
+
+//Alpha Calculation
+
+retxlp2 = log(ovr9) - log(ovr9[y])
+alphaxlp = retxlp2 - retb2*Betaxlp
+plot(alphaxlp*100, color=#e65100, style=line, transp=0, title='C Staples')
 
 
 hline(0, linewidth=1)
