@@ -49,6 +49,9 @@ plot(days_1_atr, title='1 day', color=#FF0000, linewidth=1, style=plot.style_lin
 // or highly focused funds, where a single stock index might not be representative of the investment's holdings.
 // https://en.wikipedia.org/wiki/Alpha_(finance)
 // Beta
+// Beta is a measure of the risk arising from exposure to general market movements as opposed to idiosyncratic factors.
+// The market portfolio of all investable assets has a beta of exactly 1 (here the S&P500 ). A beta below 1 can indicate
+// either an investment with lower volatility than the market, or a volatile investment whose price movements are not highly correlated with the market
 // beta (β or beta coefficient) of an investment indicates whether the investment is more or less volatile than the market. 
 // In general, a beta less than 1 indicates that the investment is less volatile than the market,
 // while a beta more than 1 indicates that the investment is more volatile than the market. Volatility is measured as the fluctuation of the price around the mean.
