@@ -7,6 +7,15 @@ study(title="Sector Alpha", shorttitle="Sector Alpha (%)")
 //alpha > 0: the investment has a return in excess of the reward for the assumed risk
 //https://en.wikipedia.org/wiki/Alpha_(finance)
 
+// The Cyclical super sector has four sectors:
+// Basic Materials, Consumer Cyclical, Financial Services, Real Estate
+// 
+// The Defensive super sector has three sectors:
+// Consumer Defensive, Healthcare, Utilities.
+// 
+// The Sensitive super sector also has four sectors:
+// Communication Services, Energy, Industrials, Technology.
+
 //Beta Calculation
 sym = "SPY", res=period, src = close, length = input(title = "Beta Window", defval=300, minval=1)
 ovr = security(sym, res, src)
