@@ -68,7 +68,7 @@ Betaxlk = correlation(retxlk, retb, length) * secdxlk / mktd
 
 retxlk3 = log(ovr3) - log(ovr3[y])
 alphaxlk = retxlk3 - retb2*Betaxlk
-plot(alphaxlk*100, color=blue, style=line, transp=40, title='Technology')
+plot(alphaxlk*100, color=#0053ff, style=line, transp=25, title='Technology')
 
 //////////////////////////////////////////    INDUSTRIALS
 
@@ -142,7 +142,7 @@ Betaxlp = correlation(retxlp, retb, length) * secdxlp / mktd
 
 retxlp2 = log(ovr9) - log(ovr9[y])
 alphaxlp = retxlp2 - retb2*Betaxlp
-plot(alphaxlp*100, color=maroon, style=line, transp=40, title='C Staples')
+plot(alphaxlp*100, color=#e65100, style=line, transp=10, title='C Staples')
 
 
 //////////////////////////////////////////    CONSUMER DISCRETIONARY
