@@ -30,6 +30,7 @@ plot(days_1_atr, title='1 day', color=#FF0000, linewidth=1, style=plot.style_lin
 //SHOULD BE USED TOGETHER WITH "Alpha" INDICATOR WHEN INTERPRETING
 // Quick explanation: alpha = asset performance compared to the market. Beta = asset volatility compared to the market.
 // Alpha
+// Alpha is a measure of the active return on an investment, the performance of that investment compared to the S&P500 index, where 0. 01 = 1%
 // Positive number (for example 0.01 means 1% here in this indicator), that means asset is outperforming market or S&P500 over given period
 // Negative number (for example -0.01 means -1% here in this indicator), that means asset is underperforming market or S&P500 over given period
 // Alpha is a measure of the active return on an investment, the performance of that investment compared with a suitable market index. 
