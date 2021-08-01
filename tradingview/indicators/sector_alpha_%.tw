@@ -1,5 +1,6 @@
-study(title="Sector Alpha", shorttitle="Sector Alpha (%)")
+study(title="SA", shorttitle="SA (%)")
 
+// Sector Alpha (%)
 ////SHOWS US MARKET SECTORS EXCESS RETURNS
 //Alpha is a measure of the active return on an investment, the performance of that investment compared to a suitable market index, in %
 //alpha < 0: the investment has earned too little for its risk (or, was too risky for the return)
