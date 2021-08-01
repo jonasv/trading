@@ -32,7 +32,7 @@ study(title="SA", shorttitle="SA (%)")
 
 
 //Beta Calculation
-sym = "SPY", res=period, src = close, length = input(title = "Beta Window", defval=300, minval=1)
+sym = "SPY", res=period, src = close, length = input(title = "Beta Window", defval=60, minval=1)
 ovr = security(sym, res, src)
 
 sym2 = "XLF"
@@ -79,7 +79,7 @@ secd = stdev(retxlf, length), mktd = stdev(retb, length)
 Betaxlf = correlation(retxlf, retb, length) * secd / mktd
 
 //Alpha Calculation
-y = input(title="alpha period", type=integer, defval=90, minval=1, maxval=1000)
+y = input(title="alpha period", type=integer, defval=60, minval=1, maxval=1000)
 retxlf2 = log(ovr2) - log(ovr2[y])
 retb2 = log(ovr) - log(ovr[y])
 alphaxlf = retxlf2 - retb2*Betaxlf
