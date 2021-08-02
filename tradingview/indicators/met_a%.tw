@@ -1,0 +1,123 @@
+study(title="Met A (%)")
+
+// Metals Alpha (%)
+////Shows Metals commodities returns compared to S&P500
+//Alpha is a measure of the active return on an investment, the performance of that investment compared to a suitable market index, in %
+//alpha < 0: the investment has earned too little for its risk (or, was too risky for the return)
+//alpha = 0: the investment has earned a return adequate for the risk taken
+//alpha > 0: the investment has a return in excess of the reward for the assumed risk
+//https://en.wikipedia.org/wiki/Alpha_(finance)
+
+
+//Beta Calculation
+sym = "SPY", res=period, src = close, length = input(title = "Beta Window", defval=60, minval=1)
+ovr = security(sym, res, src)
+
+sym2 = "LE1!" // live cattle
+ovr2 = security(sym2, res, src)
+
+sym3 = "GF1!" // feeder cattle
+ovr3 = security(sym3, res, src)
+
+sym4 = "CT1!" // cotton
+ovr4 = security(sym4, res, src)
+
+sym5 = "ZS1!" // soybeans
+ovr5 = security(sym5, res, src)
+
+sym6 = "ZW1!" // wheat
+ovr6 = security(sym6, res, src)
+
+sym7 = "ZC1!" // corn
+ovr7 = security(sym7, res, src)
+
+sym8 = "SB1!" // sugar
+ovr8 = security(sym8, res, src)
+
+//////////////////////////////////////////    live cattle
+
+retLE1 = log(ovr2) - log(ovr2[1])
+retb = log(ovr) - log(ovr[1])
+secd = stdev(retLE1, length), mktd = stdev(retb, length)
+BetaLE1 = correlation(retLE1, retb, length) * secd / mktd
+
+//Alpha Calculation
+y = input(title="alpha period", type=integer, defval=60, minval=1, maxval=1000)
+retLE12 = log(ovr2) - log(ovr2[y])
+retb2 = log(ovr) - log(ovr[y])
+alphaLE1 = retLE12 - retb2*BetaLE1
+plot(alphaLE1*100, color=#b71c1c, style=line, transp=0, title='Live cattle')
+
+//////////////////////////////////////////    feeder cattle
+
+retGF1 = log(ovr3) - log(ovr3[1])
+secdGF1 = stdev(retGF1, length)
+BetaGF1 = correlation(retGF1, retb, length) * secdGF1 / mktd
+
+//Alpha Calculation
+
+retGF12 = log(ovr3) - log(ovr3[y])
+alphaGF1 = retGF12 - retb2*BetaGF1
+plot(alphaGF1*100, color=#ff0000, style=line, transp=0, linewidth=1, title='Feeder Cattle')
+
+//////////////////////////////////////////    Cotton
+
+retCT1 = log(ovr4) - log(ovr4[1])
+secdCT1 = stdev(retCT1, length)
+BetaCT1 = correlation(retCT1, retb, length) * secdCT1 / mktd
+
+//Alpha Calculation
+
+retCT12 = log(ovr4) - log(ovr4[y])
+alphaCT1 = retCT12 - retb2*BetaCT1
+plot(alphaCT1*100, color=#a0a4ad, style=line, transp=0, linewidth=1, title='Cotton')
+
+//////////////////////////////////////////    soybeans
+
+retZS1 = log(ovr5) - log(ovr5[1])
+secdZS1 = stdev(retZS1, length)
+BetaZS1 = correlation(retZS1, retb, length) * secdZS1 / mktd
+
+//Alpha Calculation
+
+retZS12 = log(ovr5) - log(ovr5[y])
+alphaZS1 = retZS12 - retb2*BetaZS1
+plot(alphaZS1*100, color=#006064, style=line, transp=0, linewidth=1, title='Soybeans')
+
+//////////////////////////////////////////    Wheat
+
+retZW1 = log(ovr6) - log(ovr6[1])
+secdZW1 = stdev(retZW1, length)
+BetaZW1 = correlation(retZW1, retb, length) * secdZW1 / mktd
+
+//Alpha Calculation
+
+retZW12 = log(ovr6) - log(ovr6[y])
+alphaZW1 = retZW12 - retb2*BetaZW1
+plot(alphaZW1*100, color=#0097a7, style=line, transp=0, linewidth=1, title='Wheat')
+
+//////////////////////////////////////////    Corn
+
+retZC1 = log(ovr7) - log(ovr7[1])
+secdZC1 = stdev(retZC1, length)
+BetaZC1 = correlation(retZC1, retb, length) * secdZC1 / mktd
+
+//Alpha Calculation
+
+retZC12 = log(ovr7) - log(ovr7[y])
+alphaZC1 = retZC12 - retb2*BetaZC1
+plot(alphaZC1*100, color=#fbc02d, style=line, transp=0, linewidth=1, title='Corn')
+
+//////////////////////////////////////////    Sugar
+
+retSB1 = log(ovr8) - log(ovr8[1])
+secdSB1 = stdev(retSB1, length)
+BetaSB1 = correlation(retSB1, retb, length) * secdSB1 / mktd
+
+//Alpha Calculation
+
+retSB12 = log(ovr8) - log(ovr8[y])
+alphaSB1 = retSB12 - retb2*BetaSB1
+plot(alphaSB1*100, color=#ffffff, style=line, transp=0, linewidth=1, title='Sugar')
+
+hline(0, linewidth=1)
