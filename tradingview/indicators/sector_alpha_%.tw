@@ -16,19 +16,132 @@ study(title="SA", shorttitle="SA (%)")
 // 
 // The Sensitive super sector also has four sectors:
 // Communication Services, Energy, Industrials, Technology.
-
-// XLB - Materials -> chemicals; metals and mining; paper and forest products; containers and packaging; and construction materials.
-// XLC - Communications -> diversified telecommunication services; wireless telecommunication services; media; entertainment; and interactive media & services.
-// XLE - Energy -> oil, gas and consumable fuels; and energy equipment and services.
-// XLF - Financials -> diversified financial services; insurance; banks; capital markets; mortgage real estate investment trusts ("REITs"); consumer finance; and thrifts and mortgage finance.
-// XLI - Industrials -> aerospace and defense; industrial conglomerates; marine; transportation infrastructure; machinery; road and rail; air freight and logistics; commercial services and supplies.
-// XLK - Technology -> Apple; Microsoft; Nvidia; Visa; PayPal; Mastercard; Adobe; Intel; Salesforce; Cisco; mostly software or 'tech applied to real life' businesses.
-// XLP - Consumer staples -> food and staples retailing; household products; food products; beverages; tobacco; and personal products.
-// XLRE - REIT -> real estate management and development and REITs, excluding mortgage REITs.
-// XLU - Utilities -> electric utilities; water utilities; multi-utilities; independent power and renewable electricity producers; and gas utilities.
-// XLV - Health Care -> pharmaceuticals; health care equipment & supplies; health care providers & services; biotechnology; life sciences tools & services; and health care technology.
-// XLY - Consumer Discretionary -> retail; hotels, restaurants and leisure; textiles, apparel and luxury goods; household durables; automobiles; auto components; distributors; leisure products; and diversified consumer services.
-// XME - Metals & Mining -> metals and mining companies.
+// 
+// ----------------------------------------------
+// 
+// Cyclical Super Sector
+// Sectors that roll up into the Cyclical Super
+// Sector are highly sensitive to business cycle
+// peaks and troughs.
+// 
+// Basic Materials
+// Companies that manufacture chemicals,
+// building materials, and paper products. This
+// sector also includes companies engaged in
+// commodities exploration and processing.
+// Companies in this sector include BHP Billiton
+// and Rio Tinto, and Nufarm.
+// 
+// Consumer Cyclical
+// This sector includes retail stores, auto and
+// auto parts manufacturers, companies engaged
+// in residential construction, lodging facilities,
+// restaurants, and entertainment companies.
+// Companies in this sector include Hyundai
+// Motor Company, McDonald’s, and
+// News Corporation.
+// 
+// Financial Services
+// Companies that provide financial services,
+// including banks, savings and loans, asset
+// management companies, credit services,
+// investment brokerage firms, and insurance
+// companies. Companies in this sector include
+// Allianz, Commonwealth Bank, and IOOF.
+// 
+// Real Estate
+// This sector includes mortgage companies,
+// property management companies, and REITs.
+// Companies in this sector include Westfield
+// Retail Trust, Vornado Realty Trust, and Simon
+// Property Group, Inc.
+// 
+// ----------------------------------------------
+// 
+// Defensive Super Sector
+// Sectors that roll up into the Defensive Super
+// Sector are anticyclical stocks.
+// 
+// Consumer Defensive
+// Companies engaged in the manufacturing
+// of food, beverages, household and personal
+// products, packaging, or tobacco. Also includes
+// companies that provide services such as
+// education & training services. Companies in
+// this sector include Woolworths, Procter &
+// Gamble, and Coca Cola.
+// 
+// Health Care
+// This sector includes biotechnology,
+// pharmaceuticals, research services, home
+// health care, hospitals, long-term care
+// facilities, and medical equipment and
+// supplies. Companies in this sector include
+// Johnson & Johnson and Pfizer Inc.
+// 
+// Utilities
+// Electric, gas, and water utilities.
+// Companies in this sector include AGL,
+// APA Group and Envestra.
+// 
+// ----------------------------------------------
+// 
+// Sensitive Super Sector
+// Sectors that roll up into the Sensitive Super
+// Sector have moderate correlations with
+// business cycles.
+// 
+// Communication Services
+// Companies that provide communication
+// services using fixed-line networks or those
+// that provide wireless access and services.
+// This sector also includes companies
+// that provide Internet services such as access,
+// navigation and Internet related software and
+// services. Companies in this sector include
+// Telstra, Vodafone and iiNET.
+// 
+// Energy
+// Companies that produce or refine oil and gas,
+// oil field services and equipment companies,
+// and pipeline operators. This sector also
+// includes companies engaged in the mining of
+// coal. Companies in this sector include Origin
+// Energy, Caltex and Woodside.
+// 
+// Industrials
+// Companies that manufacture machinery, handheld tools, and industrial products. This sector
+// also includes aerospace and defense firms as
+// well as companies engaged in transportation
+// and logistic services. Companies in this sector
+// include General Electric Company and Boeing.
+// 
+// Technology
+// Companies engaged in the design,
+// development, and support of computer
+// operating systems and applications. This sector
+// also includes companies that provide computer
+// technology consulting services. Also includes
+// companies engaged in the manufacturing of
+// computer equipment, data storage products,
+// networking products, semiconductors, and
+// components. Companies in this sector include
+// Apple, Google, and Microsoft.
+// 
+// ----------------------------------------------
+// 
+// XLB - Materials
+// XLC - Communications
+// XLE - Energy
+// XLF - Financials
+// XLI - Industrials
+// XLK - Technology
+// XLP - Consumer staples
+// XLRE - REIT
+// XLU - Utilities
+// XLV - Health Care
+// XLY - Consumer Discretionary
+// XME - Metals & Mining
 
 
 //Beta Calculation
