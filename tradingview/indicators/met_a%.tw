@@ -54,7 +54,7 @@ retb2 = log(ovr) - log(ovr[y])
 alphaslx = retslx2 - retb2*Betaslx
 plot(alphaslx*100, color=#9598a1, style=line, transp=0, title='Steel')
 
-// //////////////////////////////////////////    Coal
+////////////////////////////////////////////    Coal
 
 retNQUSB60101040 = log(ovr3) - log(ovr3[1])
 secdNQUSB60101040 = stdev(retNQUSB60101040, length)
