@@ -13,30 +13,43 @@ study(title="Aggro A (%)")
 sym = "SPY", res=period, src = close, length = input(title = "Beta Window", defval=60, minval=1)
 ovr = security(sym, res, src)
 
-sym2 = "ZW1!"
+sym2 = "LE1!" // live cattle
 ovr2 = security(sym2, res, src)
 
-sym3 = "GF1!"
+sym3 = "GF1!" // feeder cattle
 ovr3 = security(sym3, res, src)
 
+sym4 = "CT1!" // cotton
+ovr4 = security(sym4, res, src)
 
+sym5 = "ZS1!" // soybeans
+ovr5 = security(sym5, res, src)
 
-//////////////////////////////////////////    Wheat
+sym6 = "ZW1!" // wheat
+ovr6 = security(sym6, res, src)
 
-retZW1 = log(ovr2) - log(ovr2[1])
+sym7 = "ZC1!" // corn
+ovr7 = security(sym7, res, src)
+
+sym8 = "SB1!" // sugar
+ovr8 = security(sym8, res, src)
+
+//////////////////////////////////////////    live cattle
+
+retLE1 = log(ovr2) - log(ovr2[1])
 retb = log(ovr) - log(ovr[1])
-secd = stdev(retZW1, length), mktd = stdev(retb, length)
-BetaZW1 = correlation(retZW1, retb, length) * secd / mktd
+secd = stdev(retLE1, length), mktd = stdev(retb, length)
+BetaLE1 = correlation(retLE1, retb, length) * secd / mktd
 
 //Alpha Calculation
 y = input(title="alpha period", type=integer, defval=60, minval=1, maxval=1000)
-retZW12 = log(ovr2) - log(ovr2[y])
+retLE12 = log(ovr2) - log(ovr2[y])
 retb2 = log(ovr) - log(ovr[y])
-alphaZW1 = retZW12 - retb2*BetaZW1
-plot(alphaZW1*100, color=green, style=line, transp=0, title='Wheat')
+alphaLE1 = retLE12 - retb2*BetaLE1
+plot(alphaLE1*100, color=#b71c1c, style=line, transp=0, title='Live cattle')
 
 
-//////////////////////////////////////////    Feeder Cattle
+//////////////////////////////////////////    feeder cattle
 
 retGF1 = log(ovr3) - log(ovr3[1])
 secdGF1 = stdev(retGF1, length)
@@ -46,7 +59,20 @@ BetaGF1 = correlation(retGF1, retb, length) * secdGF1 / mktd
 
 retGF12 = log(ovr3) - log(ovr3[y])
 alphaGF1 = retGF12 - retb2*BetaGF1
-plot(alphaGF1*100, color=#a0a4ad, style=line, transp=0, linewidth=1, title='Feeder Cattle')
+plot(alphaGF1*100, color=#ff0000, style=line, transp=0, linewidth=1, title='Feeder Cattle')
+
+
+//////////////////////////////////////////    Cotton
+
+retCT1 = log(ovr4) - log(ovr4[1])
+secdCT1 = stdev(retCT1, length)
+BetaCT1 = correlation(retCT1, retb, length) * secdCT1 / mktd
+
+//Alpha Calculation
+
+retCT12 = log(ovr4) - log(ovr4[y])
+alphaCT1 = retCT12 - retb2*BetaCT1
+plot(alphaCT1*100, color=#a0a4ad, style=line, transp=0, linewidth=1, title='Cotton')
 
 
 
