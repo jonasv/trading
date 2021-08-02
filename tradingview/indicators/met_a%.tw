@@ -13,42 +13,49 @@ study(title="Met A (%)")
 sym = "SPY", res=period, src = close, length = input(title = "Beta Window", defval=60, minval=1)
 ovr = security(sym, res, src)
 
-sym2 = "LE1!" // live cattle
+sym2 = "SLX" // Steel
 ovr2 = security(sym2, res, src)
 
-sym3 = "GF1!" // feeder cattle
+sym3 = "GF1!" // Coal
 ovr3 = security(sym3, res, src)
 
-sym4 = "CT1!" // cotton
+sym4 = "CT1!" // Aluminium
 ovr4 = security(sym4, res, src)
 
-sym5 = "ZS1!" // soybeans
+sym5 = "ZS1!" // Gold
 ovr5 = security(sym5, res, src)
 
-sym6 = "ZW1!" // wheat
+sym6 = "ZW1!" // Silver
 ovr6 = security(sym6, res, src)
 
-sym7 = "ZC1!" // corn
+sym7 = "ZC1!" // Copper
 ovr7 = security(sym7, res, src)
 
-sym8 = "SB1!" // sugar
+sym8 = "SB1!" // Palladium
 ovr8 = security(sym8, res, src)
 
-//////////////////////////////////////////    live cattle
+sym9 = "SB1!" // Platinum
+ovr9 = security(sym8, res, src)
 
-retLE1 = log(ovr2) - log(ovr2[1])
+sym10 = "SB1!" // Uranium
+ovr10 = security(sym8, res, src)
+
+
+//////////////////////////////////////////    steel
+
+retslx = log(ovr2) - log(ovr2[1])
 retb = log(ovr) - log(ovr[1])
-secd = stdev(retLE1, length), mktd = stdev(retb, length)
-BetaLE1 = correlation(retLE1, retb, length) * secd / mktd
+secd = stdev(retslx, length), mktd = stdev(retb, length)
+Betaslx = correlation(retslx, retb, length) * secd / mktd
 
 //Alpha Calculation
 y = input(title="alpha period", type=integer, defval=60, minval=1, maxval=1000)
-retLE12 = log(ovr2) - log(ovr2[y])
+retslx2 = log(ovr2) - log(ovr2[y])
 retb2 = log(ovr) - log(ovr[y])
-alphaLE1 = retLE12 - retb2*BetaLE1
-plot(alphaLE1*100, color=#b71c1c, style=line, transp=0, title='Live cattle')
+alphaslx = retslx2 - retb2*Betaslx
+plot(alphaslx*100, color=#b71c1c, style=line, transp=0, title='Steel')
 
-//////////////////////////////////////////    feeder cattle
+// //////////////////////////////////////////    Coal
 
 retGF1 = log(ovr3) - log(ovr3[1])
 secdGF1 = stdev(retGF1, length)
@@ -60,64 +67,64 @@ retGF12 = log(ovr3) - log(ovr3[y])
 alphaGF1 = retGF12 - retb2*BetaGF1
 plot(alphaGF1*100, color=#ff0000, style=line, transp=0, linewidth=1, title='Feeder Cattle')
 
-//////////////////////////////////////////    Cotton
+// //////////////////////////////////////////    Cotton
 
-retCT1 = log(ovr4) - log(ovr4[1])
-secdCT1 = stdev(retCT1, length)
-BetaCT1 = correlation(retCT1, retb, length) * secdCT1 / mktd
+// retCT1 = log(ovr4) - log(ovr4[1])
+// secdCT1 = stdev(retCT1, length)
+// BetaCT1 = correlation(retCT1, retb, length) * secdCT1 / mktd
 
-//Alpha Calculation
+// //Alpha Calculation
 
-retCT12 = log(ovr4) - log(ovr4[y])
-alphaCT1 = retCT12 - retb2*BetaCT1
-plot(alphaCT1*100, color=#a0a4ad, style=line, transp=0, linewidth=1, title='Cotton')
+// retCT12 = log(ovr4) - log(ovr4[y])
+// alphaCT1 = retCT12 - retb2*BetaCT1
+// plot(alphaCT1*100, color=#a0a4ad, style=line, transp=0, linewidth=1, title='Cotton')
 
-//////////////////////////////////////////    soybeans
+// //////////////////////////////////////////    soybeans
 
-retZS1 = log(ovr5) - log(ovr5[1])
-secdZS1 = stdev(retZS1, length)
-BetaZS1 = correlation(retZS1, retb, length) * secdZS1 / mktd
+// retZS1 = log(ovr5) - log(ovr5[1])
+// secdZS1 = stdev(retZS1, length)
+// BetaZS1 = correlation(retZS1, retb, length) * secdZS1 / mktd
 
-//Alpha Calculation
+// //Alpha Calculation
 
-retZS12 = log(ovr5) - log(ovr5[y])
-alphaZS1 = retZS12 - retb2*BetaZS1
-plot(alphaZS1*100, color=#006064, style=line, transp=0, linewidth=1, title='Soybeans')
+// retZS12 = log(ovr5) - log(ovr5[y])
+// alphaZS1 = retZS12 - retb2*BetaZS1
+// plot(alphaZS1*100, color=#006064, style=line, transp=0, linewidth=1, title='Soybeans')
 
-//////////////////////////////////////////    Wheat
+// //////////////////////////////////////////    Wheat
 
-retZW1 = log(ovr6) - log(ovr6[1])
-secdZW1 = stdev(retZW1, length)
-BetaZW1 = correlation(retZW1, retb, length) * secdZW1 / mktd
+// retZW1 = log(ovr6) - log(ovr6[1])
+// secdZW1 = stdev(retZW1, length)
+// BetaZW1 = correlation(retZW1, retb, length) * secdZW1 / mktd
 
-//Alpha Calculation
+// //Alpha Calculation
 
-retZW12 = log(ovr6) - log(ovr6[y])
-alphaZW1 = retZW12 - retb2*BetaZW1
-plot(alphaZW1*100, color=#0097a7, style=line, transp=0, linewidth=1, title='Wheat')
+// retZW12 = log(ovr6) - log(ovr6[y])
+// alphaZW1 = retZW12 - retb2*BetaZW1
+// plot(alphaZW1*100, color=#0097a7, style=line, transp=0, linewidth=1, title='Wheat')
 
-//////////////////////////////////////////    Corn
+// //////////////////////////////////////////    Corn
 
-retZC1 = log(ovr7) - log(ovr7[1])
-secdZC1 = stdev(retZC1, length)
-BetaZC1 = correlation(retZC1, retb, length) * secdZC1 / mktd
+// retZC1 = log(ovr7) - log(ovr7[1])
+// secdZC1 = stdev(retZC1, length)
+// BetaZC1 = correlation(retZC1, retb, length) * secdZC1 / mktd
 
-//Alpha Calculation
+// //Alpha Calculation
 
-retZC12 = log(ovr7) - log(ovr7[y])
-alphaZC1 = retZC12 - retb2*BetaZC1
-plot(alphaZC1*100, color=#fbc02d, style=line, transp=0, linewidth=1, title='Corn')
+// retZC12 = log(ovr7) - log(ovr7[y])
+// alphaZC1 = retZC12 - retb2*BetaZC1
+// plot(alphaZC1*100, color=#fbc02d, style=line, transp=0, linewidth=1, title='Corn')
 
-//////////////////////////////////////////    Sugar
+// //////////////////////////////////////////    Sugar
 
-retSB1 = log(ovr8) - log(ovr8[1])
-secdSB1 = stdev(retSB1, length)
-BetaSB1 = correlation(retSB1, retb, length) * secdSB1 / mktd
+// retSB1 = log(ovr8) - log(ovr8[1])
+// secdSB1 = stdev(retSB1, length)
+// BetaSB1 = correlation(retSB1, retb, length) * secdSB1 / mktd
 
-//Alpha Calculation
+// //Alpha Calculation
 
-retSB12 = log(ovr8) - log(ovr8[y])
-alphaSB1 = retSB12 - retb2*BetaSB1
-plot(alphaSB1*100, color=#ffffff, style=line, transp=0, linewidth=1, title='Sugar')
+// retSB12 = log(ovr8) - log(ovr8[y])
+// alphaSB1 = retSB12 - retb2*BetaSB1
+// plot(alphaSB1*100, color=#ffffff, style=line, transp=0, linewidth=1, title='Sugar')
 
 hline(0, linewidth=1)
