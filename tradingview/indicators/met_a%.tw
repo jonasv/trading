@@ -1,13 +1,12 @@
 study(title="Met A (%)")
 
 // Metals Alpha (%)
-////Shows Metals commodities returns compared to S&P500
+////Shows Metal commodities returns compared to S&P500
 //Alpha is a measure of the active return on an investment, the performance of that investment compared to a suitable market index, in %
 //alpha < 0: the investment has earned too little for its risk (or, was too risky for the return)
 //alpha = 0: the investment has earned a return adequate for the risk taken
 //alpha > 0: the investment has a return in excess of the reward for the assumed risk
 //https://en.wikipedia.org/wiki/Alpha_(finance)
-
 
 //Beta Calculation
 sym = "SPY", res=period, src = close, length = input(title = "Beta Window", defval=60, minval=1)
@@ -16,32 +15,32 @@ ovr = security(sym, res, src)
 sym2 = "SLX" // Steel
 ovr2 = security(sym2, res, src)
 
-sym3 = "GF1!" // Coal
+sym3 = "NQUSB60101040" // Coal
 ovr3 = security(sym3, res, src)
 
-sym4 = "CT1!" // Aluminium
+sym4 = "JJU" // Aluminium
 ovr4 = security(sym4, res, src)
 
-sym5 = "ZS1!" // Gold
+sym5 = "COMEX:GC1!" // Gold
 ovr5 = security(sym5, res, src)
 
-sym6 = "ZW1!" // Silver
+sym6 = "COMEX:SI1!" // Silver
 ovr6 = security(sym6, res, src)
 
-sym7 = "ZC1!" // Copper
+sym7 = "COMEX:HG1!" // Copper
 ovr7 = security(sym7, res, src)
 
-sym8 = "SB1!" // Palladium
+sym8 = "NYMEX:PA1!" // Palladium
 ovr8 = security(sym8, res, src)
 
-sym9 = "SB1!" // Platinum
-ovr9 = security(sym8, res, src)
+sym9 = "NYMEX:PL1!" // Platinum
+ovr9 = security(sym9, res, src)
 
-sym10 = "SB1!" // Uranium
-ovr10 = security(sym8, res, src)
+sym10 = "AMEX:URA" // Uranium
+ovr10 = security(sym10, res, src)
 
 
-//////////////////////////////////////////    steel
+//////////////////////////////////////////    Steel
 
 retslx = log(ovr2) - log(ovr2[1])
 retb = log(ovr) - log(ovr[1])
@@ -53,78 +52,102 @@ y = input(title="alpha period", type=integer, defval=60, minval=1, maxval=1000)
 retslx2 = log(ovr2) - log(ovr2[y])
 retb2 = log(ovr) - log(ovr[y])
 alphaslx = retslx2 - retb2*Betaslx
-plot(alphaslx*100, color=#b71c1c, style=line, transp=0, title='Steel')
+plot(alphaslx*100, color=#9598a1, style=line, transp=0, title='Steel')
 
 // //////////////////////////////////////////    Coal
 
-retGF1 = log(ovr3) - log(ovr3[1])
-secdGF1 = stdev(retGF1, length)
-BetaGF1 = correlation(retGF1, retb, length) * secdGF1 / mktd
+retNQUSB60101040 = log(ovr3) - log(ovr3[1])
+secdNQUSB60101040 = stdev(retNQUSB60101040, length)
+BetaNQUSB60101040 = correlation(retNQUSB60101040, retb, length) * secdNQUSB60101040 / mktd
 
 //Alpha Calculation
 
-retGF12 = log(ovr3) - log(ovr3[y])
-alphaGF1 = retGF12 - retb2*BetaGF1
-plot(alphaGF1*100, color=#ff0000, style=line, transp=0, linewidth=1, title='Feeder Cattle')
+retNQUSB601010402 = log(ovr3) - log(ovr3[y])
+alphaNQUSB60101040 = retNQUSB601010402 - retb2*BetaNQUSB60101040
+plot(alphaNQUSB60101040*100, color=#434651, style=line, transp=0, linewidth=1, title='Coal')
 
-// //////////////////////////////////////////    Cotton
+//////////////////////////////////////////    Aluminium
 
-// retCT1 = log(ovr4) - log(ovr4[1])
-// secdCT1 = stdev(retCT1, length)
-// BetaCT1 = correlation(retCT1, retb, length) * secdCT1 / mktd
+retJJU = log(ovr4) - log(ovr4[1])
+secdJJU = stdev(retJJU, length)
+BetaJJU = correlation(retJJU, retb, length) * secdJJU / mktd
 
-// //Alpha Calculation
+//Alpha Calculation
 
-// retCT12 = log(ovr4) - log(ovr4[y])
-// alphaCT1 = retCT12 - retb2*BetaCT1
-// plot(alphaCT1*100, color=#a0a4ad, style=line, transp=0, linewidth=1, title='Cotton')
+retJJU2 = log(ovr4) - log(ovr4[y])
+alphaJJU = retJJU2 - retb2*BetaJJU
+plot(alphaJJU*100, color=#d1d4dc, style=line, transp=0, linewidth=1, title='Aluminium')
 
-// //////////////////////////////////////////    soybeans
+//////////////////////////////////////////    Gold
 
-// retZS1 = log(ovr5) - log(ovr5[1])
-// secdZS1 = stdev(retZS1, length)
-// BetaZS1 = correlation(retZS1, retb, length) * secdZS1 / mktd
+retGC1 = log(ovr5) - log(ovr5[1])
+secdGC1 = stdev(retGC1, length)
+BetaGC1 = correlation(retGC1, retb, length) * secdGC1 / mktd
 
-// //Alpha Calculation
+//Alpha Calculation
 
-// retZS12 = log(ovr5) - log(ovr5[y])
-// alphaZS1 = retZS12 - retb2*BetaZS1
-// plot(alphaZS1*100, color=#006064, style=line, transp=0, linewidth=1, title='Soybeans')
+retGC12 = log(ovr5) - log(ovr5[y])
+alphaGC1 = retGC12 - retb2*BetaGC1
+plot(alphaGC1*100, color=#fbc02d, style=line, transp=0, linewidth=1, title='Gold')
 
-// //////////////////////////////////////////    Wheat
+//////////////////////////////////////////    Silver
 
-// retZW1 = log(ovr6) - log(ovr6[1])
-// secdZW1 = stdev(retZW1, length)
-// BetaZW1 = correlation(retZW1, retb, length) * secdZW1 / mktd
+retSI1 = log(ovr6) - log(ovr6[1])
+secdSI1 = stdev(retSI1, length)
+BetaSI1 = correlation(retSI1, retb, length) * secdSI1 / mktd
 
-// //Alpha Calculation
+//Alpha Calculation
 
-// retZW12 = log(ovr6) - log(ovr6[y])
-// alphaZW1 = retZW12 - retb2*BetaZW1
-// plot(alphaZW1*100, color=#0097a7, style=line, transp=0, linewidth=1, title='Wheat')
+retSI12 = log(ovr6) - log(ovr6[y])
+alphaSI1 = retSI12 - retb2*BetaSI1
+plot(alphaSI1*100, color=#659aaa, style=line, transp=0, linewidth=1, title='Silver')
 
-// //////////////////////////////////////////    Corn
+//////////////////////////////////////////    Copper
 
-// retZC1 = log(ovr7) - log(ovr7[1])
-// secdZC1 = stdev(retZC1, length)
-// BetaZC1 = correlation(retZC1, retb, length) * secdZC1 / mktd
+retHG1 = log(ovr7) - log(ovr7[1])
+secdHG1 = stdev(retHG1, length)
+BetaHG1 = correlation(retHG1, retb, length) * secdHG1 / mktd
 
-// //Alpha Calculation
+//Alpha Calculation
 
-// retZC12 = log(ovr7) - log(ovr7[y])
-// alphaZC1 = retZC12 - retb2*BetaZC1
-// plot(alphaZC1*100, color=#fbc02d, style=line, transp=0, linewidth=1, title='Corn')
+retHG12 = log(ovr7) - log(ovr7[y])
+alphaHG1 = retHG12 - retb2*BetaHG1
+plot(alphaHG1*100, color=#e65100, style=line, transp=0, linewidth=1, title='Copper')
 
-// //////////////////////////////////////////    Sugar
+//////////////////////////////////////////    Palladium
 
-// retSB1 = log(ovr8) - log(ovr8[1])
-// secdSB1 = stdev(retSB1, length)
-// BetaSB1 = correlation(retSB1, retb, length) * secdSB1 / mktd
+retPA1 = log(ovr8) - log(ovr8[1])
+secdPA1 = stdev(retPA1, length)
+BetaPA1 = correlation(retPA1, retb, length) * secdPA1 / mktd
 
-// //Alpha Calculation
+//Alpha Calculation
 
-// retSB12 = log(ovr8) - log(ovr8[y])
-// alphaSB1 = retSB12 - retb2*BetaSB1
-// plot(alphaSB1*100, color=#ffffff, style=line, transp=0, linewidth=1, title='Sugar')
+retPA12 = log(ovr8) - log(ovr8[y])
+alphaPA1 = retPA12 - retb2*BetaPA1
+plot(alphaPA1*100, color=#00e3ff, style=line, transp=0, linewidth=1, title='Palladium')
+
+//////////////////////////////////////////    Platinum
+
+retPL1 = log(ovr9) - log(ovr9[1])
+secdPL1 = stdev(retPL1, length)
+BetaPL1 = correlation(retPL1, retb, length) * secdPL1 / mktd
+
+//Alpha Calculation
+
+retPL12 = log(ovr9) - log(ovr9[y])
+alphaPL1 = retPL12 - retb2*BetaPL1
+plot(alphaPL1*100, color=#8cbde3, style=line, transp=0, linewidth=1, title='Platinum')
+
+//////////////////////////////////////////    Uranium
+
+retURA = log(ovr10) - log(ovr10[1])
+secdURA = stdev(retURA, length)
+BetaURA = correlation(retURA, retb, length) * secdURA / mktd
+
+//Alpha Calculation
+
+retURA2 = log(ovr10) - log(ovr10[y])
+alphaURA = retURA2 - retb2*BetaURA
+plot(alphaURA*100, color=#388e3c, style=line, transp=0, linewidth=1, title='Uranium')
 
 hline(0, linewidth=1)
