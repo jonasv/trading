@@ -1,0 +1,7 @@
+
+// © hydrus2000
+//@version=4
+study("PEG ratio")
+
+peg_ratio_fq = financial(syminfo.tickerid, "PEG_RATIO", "FQ")
+plot(peg_ratio_fq, title='Revenue', color=#2196f3, linewidth=2)
