@@ -5,5 +5,6 @@ study("EPS FQ/TTM")
 
 eps_fq = financial(syminfo.tickerid, "EARNINGS_PER_SHARE", "FQ")
 eps_ttm = financial(syminfo.tickerid, "EARNINGS_PER_SHARE", "TTM")
-plot(eps_fq, title='Revenue', color=#00ff0b)
-plot(eps_ttm, title='Revenue', color=#009688)
+plot(eps_fq, title='EPS FQ', color=#2196f3, linewidth=2)
+plot(eps_ttm, title='EPS TTM', color=#2196f3, linewidth=2)
+hline(0, linewidth=1)
