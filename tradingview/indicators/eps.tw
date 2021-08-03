@@ -1,0 +1,9 @@
+// © hydrus2000
+//@version=4
+// Shows total revenue, assets, equity, liabilities and debt
+study("EPS FQ/TTM")
+
+eps_fq = financial(syminfo.tickerid, "EARNINGS_PER_SHARE", "FQ")
+eps_ttm = financial(syminfo.tickerid, "EARNINGS_PER_SHARE", "TTM")
+plot(eps_fq, title='Revenue', color=#00ff0b)
+plot(eps_ttm, title='Revenue', color=#009688)
