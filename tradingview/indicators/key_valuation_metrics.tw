@@ -1,0 +1,23 @@
+// © hydrus2000
+//@version=4
+// Shows total revenue, assets, equity, liabilities and debt
+study("Revenue/assets/equity/liabilities/debt")
+
+length = input(title="FQ/FY or TTM? ", type=input.string, defval="FQ") // FQ = Financial quarter, FY = financial year & TTM = trailining 12 months
+revenue = financial(syminfo.tickerid, "TOTAL_REVENUE", length)
+assets = financial(syminfo.tickerid, "TOTAL_ASSETS", length)
+equity = financial(syminfo.tickerid, "TOTAL_EQUITY", length)
+liabilities = financial(syminfo.tickerid, "TOTAL_LIABILITIES", length)
+debt = financial(syminfo.tickerid, "TOTAL_DEBT", length)
+
+ 
+
+ 
+plot(revenue, title='Revenue', color=#00ff0b)
+plot(assets, title='Assets', color=#4caf50)
+plot(equity, title='Equity', color=#224923)
+plot(liabilities, title='Liabilities', color=#ee4d4a)
+plot(debt, title='Debt', color=#ff0000)
+
+// TR5 = financial(syminfo.tickerid, "FREE_CASH_FLOW", "FQ")
+// plot(TR5, color=color.blue)
