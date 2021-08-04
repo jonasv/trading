@@ -1,0 +1,162 @@
+study(title="Cyclicals vs. Defensives A (%)")
+
+////SHOWS MEAN US CYCLICAL vs. DEFENSIVE MARKET SECTOR EXCESS RETURNS
+//Alpha is a measure of the active return on an investment, the performance of that investment compared to a suitable market index, in %
+//alpha < 0: the investment has earned too little for its risk (or, was too risky for the return)
+//alpha = 0: the investment has earned a return adequate for the risk taken
+//alpha > 0: the investment has a return in excess of the reward for the assumed risk
+//https://en.wikipedia.org/wiki/Alpha_(finance)
+
+//Beta Calculation
+sym = "SPY", res=period, src = close, length = input(title = "Beta Window", defval=60, minval=1)
+ovr = security(sym, res, src)
+
+sym2 = "XLF"
+ovr2 = security(sym2, res, src)
+
+sym3 = "XLK"
+ovr3 = security(sym3, res, src)
+
+sym4 = "XLI"
+ovr4 = security(sym4, res, src)
+
+sym5 = "XLB"
+ovr5 = security(sym5, res, src)
+
+sym6 = "XLV"
+ovr6 = security(sym6, res, src)
+
+sym7 = "XLU"
+ovr7 = security(sym7, res, src)
+
+sym8 = "XLE"
+ovr8 = security(sym8, res, src)
+
+sym9 = "XLP"
+ovr9 = security(sym9, res, src)
+
+sym10 = "XLY"
+ovr10 = security(sym10, res, src)
+
+//////////////////////////////////////////    FINANCIALS
+
+retxlf = log(ovr2) - log(ovr2[1])
+retb = log(ovr) - log(ovr[1])
+secd = stdev(retxlf, length), mktd = stdev(retb, length)
+Betaxlf = correlation(retxlf, retb, length) * secd / mktd
+
+//Alpha Calculation
+y = input(title="alpha period", type=integer, defval=60, minval=1, maxval=1000)
+retxlf2 = log(ovr2) - log(ovr2[y])
+retb2 = log(ovr) - log(ovr[y])
+alphaxlf = retxlf2 - retb2*Betaxlf
+//plot(alphaxlf*100, color=green, style=line, transp=40, title='Fin')
+
+//////////////////////////////////////////    TECHNOLOGY
+
+retxlk = log(ovr3) - log(ovr3[1])
+secdxlk = stdev(retxlk, length)
+Betaxlk = correlation(retxlk, retb, length) * secdxlk / mktd
+
+//Alpha Calculation
+
+retxlk3 = log(ovr3) - log(ovr3[y])
+alphaxlk = retxlk3 - retb2*Betaxlk
+//plot(alphaxlk*100, color=blue, style=line, transp=40, title='Tech')
+
+//////////////////////////////////////////    INDUSTRIALS
+
+retxli = log(ovr4) - log(ovr4[1])
+secdxli = stdev(retxli, length)
+Betaxli = correlation(retxli, retb, length) * secdxli / mktd
+
+//Alpha Calculation
+
+retxli3 = log(ovr4) - log(ovr4[y])
+alphaxli = retxli3 - retb2*Betaxli
+//plot(alphaxli*100, color=aqua, style=line, transp=40, title='Indu')
+
+
+//////////////////////////////////////////    MATERIALS
+
+retxlb = log(ovr5) - log(ovr5[1])
+secdxlb = stdev(retxlb, length)
+Betaxlb = correlation(retxlb, retb, length) * secdxlb / mktd
+
+//Alpha Calculation
+
+retxlb2 = log(ovr5) - log(ovr5[y])
+alphaxlb = retxlb2 - retb2*Betaxlb
+//plot(alphaxlb*100, color=green, style=line, transp=0, title='Mats')
+
+//////////////////////////////////////////    HEALTHCARE
+
+retxlv = log(ovr6) - log(ovr6[1])
+secdxlv = stdev(retxlv, length)
+Betaxlv = correlation(retxlv, retb, length) * secdxlv / mktd
+
+//Alpha Calculation
+
+retxlv2 = log(ovr6) - log(ovr6[y])
+alphaxlv = retxlv2 - retb2*Betaxlv
+//plot(alphaxlv*100, color=red, style=line, transp=40, title='HlthCare')
+
+
+//////////////////////////////////////////    UTILITIES
+
+retxlu = log(ovr7) - log(ovr7[1])
+secdxlu = stdev(retxlu, length)
+Betaxlu = correlation(retxlu, retb, length) * secdxlu / mktd
+
+//Alpha Calculation
+
+retxlu2 = log(ovr7) - log(ovr7[y])
+alphaxlu = retxlu2 - retb2*Betaxlu
+//plot(alphaxlu*100, color=orange, style=line, transp=60, title='Utlt')
+
+//////////////////////////////////////////    ENERGY
+
+retxle = log(ovr8) - log(ovr8[1])
+secdxle = stdev(retxle, length)
+Betaxle = correlation(retxle, retb, length) * secdxle / mktd
+
+//Alpha Calculation
+
+retxle2 = log(ovr8) - log(ovr8[y])
+alphaxle = retxle2 - retb2*Betaxle
+//plot(alphaxle*100, color=orange, style=line, transp=0, title='Nrg')
+
+//////////////////////////////////////////    CONSUMER STAPLES
+
+retxlp = log(ovr9) - log(ovr9[1])
+secdxlp = stdev(retxlp, length)
+Betaxlp = correlation(retxlp, retb, length) * secdxlp / mktd
+
+//Alpha Calculation
+
+retxlp2 = log(ovr9) - log(ovr9[y])
+alphaxlp = retxlp2 - retb2*Betaxlp
+//plot(alphaxlp*100, color=maroon, style=line, transp=40, title='Stpl')
+
+
+//////////////////////////////////////////    CONSUMER DISCRETIONARY
+
+retxly = log(ovr10) - log(ovr10[1])
+secdxly = stdev(retxly, length)
+Betaxly = correlation(retxly, retb, length) * secdxly / mktd
+
+//Alpha Calculation
+
+retxly2 = log(ovr10) - log(ovr10[y])
+alphaxly = retxly2 - retb2*Betaxly
+//plot(alphaxly*100, color=olive, style=line, transp=10, linewidth=1, title='Disc')
+
+
+
+non=(alphaxlu+alphaxlp+alphaxlv+alphaxle)*100/4
+cycl=(alphaxlk+alphaxlf+alphaxly+alphaxli+alphaxlb)*100/5
+// bgcolor (sma(non,9) > 0 ? green : red, transp=70)
+plot(non, color=red, style=line, transp=40, linewidth=1, title='Non-cyclical')
+plot(cycl, color=green, style=line, transp=40, linewidth=1, title='Cyclical')
+hline(0, linewidth=1)
+
