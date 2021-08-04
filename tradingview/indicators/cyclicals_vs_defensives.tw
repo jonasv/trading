@@ -151,9 +151,8 @@ retxly2 = log(ovr10) - log(ovr10[y])
 alphaxly = retxly2 - retb2*Betaxly
 //plot(alphaxly*100, color=olive, style=line, transp=10, linewidth=1, title='Disc')
 
-
-non=(alphaxlu+alphaxlp+alphaxlv)*100/3 // Utilities, Consumer Staples, Health care
 cycl=(alphaxlk+alphaxlf+alphaxly+alphaxli+alphaxlb+alphaxle)*100/6 // Technology, Financials, Consumer discretionary, Industrials, Materials, Energy
-plot(non, color=#FF0000, style=line, transp=40, linewidth=1, title='Defensives')
+non=(alphaxlu+alphaxlp+alphaxlv)*100/3 // Utilities, Consumer Staples, Health care
 plot(cycl, color=#ffee58, style=line, transp=40, linewidth=1, title='Cyclicals')
+plot(non, color=#FF0000, style=line, transp=40, linewidth=1, title='Defensives')
 hline(0, linewidth=1)
