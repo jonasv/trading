@@ -1,4 +1,4 @@
-study(title="Cyclicals vs. Defensives A (%)")
+study(title="C vs D A (%)")
 
 ////SHOWS MEAN US CYCLICAL vs. DEFENSIVE MARKET SECTOR EXCESS RETURNS
 //Alpha is a measure of the active return on an investment, the performance of that investment compared to a suitable market index, in %
@@ -170,6 +170,6 @@ alphaxlc = retxlc2 - retb2*Betaxlc
 
 non=(alphaxlu+alphaxlp+alphaxlv+alphaxlc)*100/4
 cycl=(alphaxlk+alphaxlf+alphaxly+alphaxli+alphaxlb+alphaxle)*100/6
-plot(non, color=red, style=line, transp=30, linewidth=1, title='Defensives')
-plot(cycl, color=green, style=line, transp=30, linewidth=1, title='Cyclicals')
+plot(non, color=#FF0000, style=line, transp=40, linewidth=1, title='Defensives')
+plot(cycl, color=#ffee58, style=line, transp=40, linewidth=1, title='Cyclicals')
 hline(0, linewidth=1)
