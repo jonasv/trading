@@ -34,6 +34,24 @@ ovr7 = security(sym7, res, src)
 sym8 = "SB1!" // sugar
 ovr8 = security(sym8, res, src)
 
+sym9 = "KC1!" // coffee
+ovr9 = security(sym9, res, src)
+
+sym10 = "LBS1!" // lumber
+ovr10 = security(sym10, res, src)
+
+sym11 = "OJ1!" // orange juice
+ovr11 = security(sym11, res, src)
+
+sym12 = "CC1!" // Cocoa
+ovr12 = security(sym12, res, src)
+
+sym13 = "ZO1!" // Oats
+ovr13 = security(sym13, res, src)
+
+sym14 = "ZR1!" // Rice
+ovr14 = security(sym14, res, src)
+
 //////////////////////////////////////////    live cattle
 
 retLE1 = log(ovr2) - log(ovr2[1])
@@ -106,7 +124,7 @@ BetaZC1 = correlation(retZC1, retb, length) * secdZC1 / mktd
 
 retZC12 = log(ovr7) - log(ovr7[y])
 alphaZC1 = retZC12 - retb2*BetaZC1
-plot(alphaZC1*100, color=#fbc02d, style=line, transp=0, linewidth=1, title='Corn')
+plot(alphaZC1*100, color=#bc9b29, style=line, transp=0, linewidth=1, title='Corn')
 
 //////////////////////////////////////////    Sugar
 
@@ -119,5 +137,78 @@ BetaSB1 = correlation(retSB1, retb, length) * secdSB1 / mktd
 retSB12 = log(ovr8) - log(ovr8[y])
 alphaSB1 = retSB12 - retb2*BetaSB1
 plot(alphaSB1*100, color=#ffffff, style=line, transp=0, linewidth=1, title='Sugar')
+
+// Coffee, lumber, orange juice, cocoa, oats, rice
+//////////////////////////////////////////    Coffee
+
+retKC1 = log(ovr9) - log(ovr9[1])
+secdKC1 = stdev(retKC1, length)
+BetaKC1 = correlation(retKC1, retb, length) * secdKC1 / mktd
+
+//Alpha Calculation
+
+retKC12 = log(ovr9) - log(ovr9[y])
+alphaKC1 = retKC12 - retb2*BetaKC1
+plot(alphaKC1*100, color=#d56400, style=line, transp=0, linewidth=1, title='Coffee')
+
+//////////////////////////////////////////    Lumber
+
+retLBS1 = log(ovr10) - log(ovr10[1])
+secdLBS1 = stdev(retLBS1, length)
+BetaLBS1 = correlation(retLBS1, retb, length) * secdLBS1 / mktd
+
+//Alpha Calculation
+
+retLBS12 = log(ovr10) - log(ovr10[y])
+alphaLBS1 = retLBS12 - retb2*BetaLBS1
+plot(alphaLBS1*100, color=#09b710, style=line, transp=0, linewidth=1, title='Lumber')
+
+//////////////////////////////////////////    Orange juice
+
+retOJ1 = log(ovr11) - log(ovr11[1])
+secdOJ1 = stdev(retOJ1, length)
+BetaOJ1 = correlation(retOJ1, retb, length) * secdOJ1 / mktd
+
+//Alpha Calculation
+
+retOJ12 = log(ovr11) - log(ovr11[y])
+alphaOJ1 = retOJ12 - retb2*BetaOJ1
+plot(alphaOJ1*100, color=#ffdf00, style=line, transp=0, linewidth=1, title='Orange juice')
+
+//////////////////////////////////////////    Cocoa
+
+retCC1 = log(ovr12) - log(ovr12[1])
+secdCC1 = stdev(retCC1, length)
+BetaCC1 = correlation(retCC1, retb, length) * secdCC1 / mktd
+
+//Alpha Calculation
+
+retCC12 = log(ovr12) - log(ovr12[y])
+alphaCC1 = retCC12 - retb2*BetaCC1
+plot(alphaCC1*100, color=#c69365, style=line, transp=0, linewidth=1, title='Cocoa')
+
+////////////////////////////////////////    Oats
+
+retZO1 = log(ovr13) - log(ovr13[1])
+secdZO1 = stdev(retZO1, length)
+BetaZO1 = correlation(retZO1, retb, length) * secdZO1 / mktd
+
+//Alpha Calculation
+
+retZO12 = log(ovr13) - log(ovr13[y])
+alphaZO1 = retZO12 - retb2*BetaZO1
+plot(alphaZO1*100, color=#b1b1b1, style=line, transp=0, linewidth=1, title='Oats')
+
+//////////////////////////////////////////    Rice
+
+retZR1 = log(ovr14) - log(ovr14[1])
+secdZR1 = stdev(retZR1, length)
+BetaZR1 = correlation(retZR1, retb, length) * secdZR1 / mktd
+
+//Alpha Calculation
+
+retZR12 = log(ovr14) - log(ovr14[y])
+alphaZR1 = retZR12 - retb2*BetaZR1
+plot(alphaZR1*100, color=#ad55ff, style=line, transp=0, linewidth=1, title='Rice')
 
 hline(0, linewidth=1)
