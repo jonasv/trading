@@ -38,9 +38,6 @@ ovr9 = security(sym9, res, src)
 sym10 = "XLY"
 ovr10 = security(sym10, res, src)
 
-sym11 = "XLC"
-ovr11 = security(sym11, res, src)
-
 //////////////////////////////////////////    FINANCIALS
 
 retxlf = log(ovr2) - log(ovr2[1])
@@ -154,21 +151,8 @@ retxly2 = log(ovr10) - log(ovr10[y])
 alphaxly = retxly2 - retb2*Betaxly
 //plot(alphaxly*100, color=olive, style=line, transp=10, linewidth=1, title='Disc')
 
-//////////////////////////////////////////    COMMUNICATIONS
 
-retxlc = log(ovr11) - log(ovr11[1])
-secdxlc = stdev(retxlc, length)
-Betaxlc = correlation(retxlc, retb, length) * secdxlc / mktd
-
-//Alpha Calculation
-
-retxlc2 = log(ovr11) - log(ovr11[y])
-alphaxlc = retxlc2 - retb2*Betaxlc
-//plot(alphaxly*100, color=olive, style=line, transp=10, linewidth=1, title='Disc')
-
-
-
-non=(alphaxlu+alphaxlp+alphaxlv+alphaxlc)*100/4
+non=(alphaxlu+alphaxlp+alphaxlv)*100/3
 cycl=(alphaxlk+alphaxlf+alphaxly+alphaxli+alphaxlb+alphaxle)*100/6
 plot(non, color=#FF0000, style=line, transp=40, linewidth=1, title='Defensives')
 plot(cycl, color=#ffee58, style=line, transp=40, linewidth=1, title='Cyclicals')
