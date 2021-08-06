@@ -1,7 +1,12 @@
 // // Simple moving average on steroids 60 and 20 days
 // // © hydrus2000
 //@version=4
-study("_SMAOS 60/20")
+study("_SMAOSHMA 60/20")
 
 plot(sma(close, 60), title='60 days', color=#00FF00, linewidth=1, style=plot.style_line, transp=50)
 plot(sma(close, 20), title='20 days', color=#FFFF00, linewidth=1, style=plot.style_line, transp=50)
+
+src = input(defval=close, type=input.source, title="Source")
+length = input(defval=20, type=input.integer, title="Length")
+hmaBuildIn = hma(src, length)
+plot(hmaBuildIn, title="Hull MA", color=#FFFFFF, transp=50)
