@@ -1,0 +1,14 @@
+//@version=4
+// Shows weekly returns of the asset compared to previous week
+// =(B16-D16)/((B16+D16)/2)*100
+study(title='test', overlay=false)
+x1=security(syminfo.tickerid, "W", close[0])
+x2=security(syminfo.tickerid, "W", close[1])
+x3=(x1 - x2)/((x1 + x2)/2) * 100
+length=input(title="weeks", type=input.integer, defval=4)
+hline(0)
+col_grow_above = input(#26A69A, "Above   Grow", input.color, group="Histogram", inline="Above")
+col_fall_above = input(#B2DFDB, "Fall", input.color, group="Histogram", inline="Above")
+col_grow_below = input(#FFCDD2, "Below Grow", input.color, group="Histogram", inline="Below")
+col_fall_below = input(#FF5252, "Fall", input.color, group="Histogram", inline="Below")
+plot(x3, title="Histogram", style=plot.style_columns, color=(x3>=0 ? (x3[1] < x3 ? col_grow_above : col_fall_above) : (x3[1] < x3 ? col_grow_below : col_fall_below)))
