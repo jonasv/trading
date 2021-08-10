@@ -59,17 +59,17 @@ botline = -1
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 //Axis Plots
-tplot = plot(topline, title="100% Positive Correlation Level", color=lime, style=line, linewidth=1, transp=0)
+// tplot = plot(topline, title="100% Positive Correlation Level", color=lime, style=line, linewidth=1, transp=0)
 hplot = plot(hizone,  title="75% Positive Correlation Level",  color=lime, style=line, linewidth=1, transp=0)
 mplot = plot(mid,     title="0% Correlation Level",            color=gray, style=line, linewidth=1, transp=0)
 lplot = plot(lozone,  title="75% Negative Correlation Level",  color=red,  style=line, linewidth=1, transp=0)
-bplot = plot(botline, title="100% Negative Correlation Level", color=red,  style=line, linewidth=1, transp=0)
+// bplot = plot(botline, title="100% Negative Correlation Level", color=red,  style=line, linewidth=1, transp=0)
 
 //Axis Fills
-fill(tplot, hplot, color=aqua,    title="High Positive Correlation Zone")
-fill(hplot, mplot, color=green,   title="Positive Correlation Zone")
-fill(mplot, lplot, color=maroon,  title="Negative Correlation Zone")
-fill(lplot, bplot, color=fuchsia, title="High Negative Correlation Zone")
+// fill(tplot, hplot, color=aqua,    title="High Positive Correlation Zone")
+// fill(hplot, mplot, color=green,   title="Positive Correlation Zone")
+// fill(mplot, lplot, color=maroon,  title="Negative Correlation Zone")
+// fill(lplot, bplot, color=fuchsia, title="High Negative Correlation Zone")
 
 //r Plots
 r1plot = plot(r1,color=orange , title="Correlation Coefficient 1", linewidth=2,transp=0)
