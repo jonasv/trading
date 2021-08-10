@@ -1,0 +1,82 @@
+//@version=2
+study(title="CC", overlay=false)
+
+//This is a simple study designed to visualize price correlations between multiple securities.
+// Correlation Coefficient (CC) is used in statistics to measure the correlation between two sets of data. 
+// In the trading world, the data sets would be stocks, etf's or any other financial instrument.
+// The correlation between two financial instruments, simply put, is the degree in which they are related.
+// Correlation is based on a scale of 1 to -1. 
+// The closer the Correlation Coefficient is to 1, the higher their positive correlation. The instruments will move up and down together.
+// The higher the Correlation efficient is to -1, the more they move in opposite directions. A value at 0 indicates that there is no correlation.
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Inputs
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//Resolution
+ures   = input(defval=true, title="Use Current Resolution")
+reso   = input(defval="D",  title="Calculation Resolution")
+
+//Lookback
+look   = input(defval=120,   title="Correlation Lookback Length")
+
+//Securities
+usec1  = input(defval=true,     title="Enable Comparison Security 1")
+sec1in = input(defval="SPX", title="Comparison Security 1")
+usec2  = input(defval=false,    title="Enable Comparison Security 2")
+sec2in = input(defval="NZDUSD", title="Comparison Security 2")
+usec3  = input(defval=false,    title="Enable Comparison Security 3")
+sec3in = input(defval="DXY",    title="Comparison Security 3")
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Definitions
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//Comparison Securities
+res   = ures ? period : reso
+secm  = security(tickerid, res, close[0])
+sec1a = security(sec1in, res, close[0])
+sec1  = usec1 ? sec1a : na
+sec2a = security(sec2in, res, close[0])
+sec2  = usec2 ? sec2a : na
+sec3a = security(sec3in, res, close[0])
+sec3  = usec3 ? sec3a : na
+
+//Correlation Coefficient (r)
+r1 = correlation(secm,sec1,look)
+r2 = correlation(secm,sec2,look)
+r3 = correlation(secm,sec3,look)
+
+//Axis
+topline = 1
+hizone  = 0.75
+mid     = 0
+lozone  = -0.75
+botline = -1
+
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+//Plots
+//-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+//Axis Plots
+tplot = plot(topline, title="100% Positive Correlation Level", color=lime, style=line, linewidth=1, transp=0)
+hplot = plot(hizone,  title="75% Positive Correlation Level",  color=lime, style=line, linewidth=1, transp=0)
+mplot = plot(mid,     title="0% Correlation Level",            color=gray, style=line, linewidth=1, transp=0)
+lplot = plot(lozone,  title="75% Negative Correlation Level",  color=red,  style=line, linewidth=1, transp=0)
+bplot = plot(botline, title="100% Negative Correlation Level", color=red,  style=line, linewidth=1, transp=0)
+
+//Axis Fills
+fill(tplot, hplot, color=aqua,    title="High Positive Correlation Zone")
+fill(hplot, mplot, color=green,   title="Positive Correlation Zone")
+fill(mplot, lplot, color=maroon,  title="Negative Correlation Zone")
+fill(lplot, bplot, color=fuchsia, title="High Negative Correlation Zone")
+
+//r Plots
+r1plot = plot(r1,color=orange , title="Correlation Coefficient 1", linewidth=2,transp=0)
+r2plot = plot(r2,color=aqua,    title="Correlation Coefficient 2", linewidth=2,transp=0)
+r3plot = plot(r3,color=purple,  title="Correlation Coefficient 3", linewidth=2,transp=0)
+
+//r Fills
+fill(r1plot, mplot, color=orange,  transp=50, title="Correlation Coefficient 1 Fill")
+fill(r2plot, mplot, color=aqua,    transp=50, title="Correlation Coefficient 2 Fill")
+fill(r3plot, mplot, color=fuchsia, transp=50, title="Correlation Coefficient 3 Fill")
