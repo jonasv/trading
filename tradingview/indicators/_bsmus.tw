@@ -5,7 +5,7 @@
 study("BSMUS", precision=10)
 type= input(title="Type of Option", defval="Long Call", options=["Long Call", "Long Put"])
 future_price=input(title="Future price (enter price)", type=input.float, defval=-1) // enter number here or leave -1 to not use this field
-spot_price=input(title="Spot price (write close)", type=input.string, defval="-1") // enter word "close" without quotes or leave -1 to not use this field (future and spot price field cannot be used together, only 1 of them at the time)
+spot_price=input(title="Spot price (write close)", type=input.string, defval="-1") // enter word "close" without quotes or leave -1 to not use this field (future and spot prices field cannot be used together, only 1 of them at the time)
 price_checker=if spot_price != "-1"
     close
 else
