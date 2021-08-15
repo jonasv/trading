@@ -15,8 +15,8 @@ S=price_checker
 K=input(50,minval=0.0001,title="Strike")
 Minutes = input(0, title="Minutes until expiry")
 Hours = input(0, title="Hours until expiry")*60
-Days = input(102, minval=0, title="Days until expiry")+((Hours+Minutes)/1440)
-sigma=input(0.000,"Implied Volatility %")/100
+Days = input(30, minval=0, title="Days until expiry")+((Hours+Minutes)/1440)
+sigma=input(20.000,"Implied Volatility %")/100
 D1=input(0, minval=0.000000, title="Next Dividend")
 t1=input(0, title="Days until Ex-Dividend 1")
 D2=input(0, minval=0.000000, title="Next Furthest Dividend")
