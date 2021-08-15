@@ -3,12 +3,24 @@
 // Black-Scholes Model for American options
 //@version=4
 study("BSMUS", precision=10)
-S=close
-K=input(126.25,minval=0.0001,title="Your Strike Price")
-D1=input(0.205, minval=0.000000, title="Next Dividend")
-t1=input(32, title="Days until Ex-Dividend 1")
-D2=input(0.205, minval=0.000000, title="Next Furthest Dividend")
-t2=input(126, title="Days until Ex-Dividend 2")
+type= input(title="Type of Option", defval="Long Call", options=["Long Call", "Long Put"])
+future_price=input(title="Future price (enter price)", type=input.float, defval=-1)
+spot_price=input(title="Spot price (write close)", type=input.string, defval="-1")
+price_checker=if spot_price != "-1"
+    close
+else
+    future_price
+S=price_checker
+// S=close
+K=input(50,minval=0.0001,title="Strike")
+Minutes = input(0, title="Minutes until expiry")
+Hours = input(0, title="Hours until expiry")*60
+Days = input(102, minval=0, title="Days until expiry")+((Hours+Minutes)/1440)
+sigma=input(0.000,"Implied Volatility %")/100
+D1=input(0, minval=0.000000, title="Next Dividend")
+t1=input(0, title="Days until Ex-Dividend 1")
+D2=input(0, minval=0.000000, title="Next Furthest Dividend")
+t2=input(0, title="Days until Ex-Dividend 2")
 
 riskfreerate=input(title="Option Base Currency",defval="USD", options=["USD","GBP","JPY","CAD","CNH","SGD","INR","AUD","SEK","NOK","DKK"])
 
@@ -35,10 +47,7 @@ else if riskfreerate=="NOK"
 else if riskfreerate=="DKK"
     "DK10Y"
 r=security(Bond_Yield,timeframe.period,S)/100
-Minutes = input(0, title="Minutes until expiry")
-Hours = input(0, title="Hours until expiry")*60
-Days = input(102, minval=0, title="Days until expiry")+((Hours+Minutes)/1440)
-sigma=input(0.000,"Implied Volatility %")/100
+
 
 len=365
 T = Days/len
@@ -110,7 +119,7 @@ AmerPut= if AmerPut1<AmerPut2
 else
     AmerPut1
 
-type= input(title="Type of Option", defval="Long Call", options=["Long Call", "Long Put"])
+
 
 AmerPrice=if type=="Long Put"
     AmerPut
