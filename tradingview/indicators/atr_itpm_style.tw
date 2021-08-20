@@ -9,11 +9,11 @@ study("_ATR 10/5/1 (ITPM STYLE)")
 
 // ATR code
 true_range_x(first_day,second_day) =>
-    fday1_h = security(syminfo.tickerid, "D", high[first_day])
-    fday1_l = security(syminfo.tickerid, "D", low[first_day])
+    fday1_h = security(syminfo.tickerid, "", high[first_day])
+    fday1_l = security(syminfo.tickerid, "", low[first_day])
     fday1_range = fday1_h - fday1_l
-    fday2_h = security(syminfo.tickerid, "D", high[second_day])
-    fday2_l = security(syminfo.tickerid, "D", low[second_day])
+    fday2_h = security(syminfo.tickerid, "", high[second_day])
+    fday2_l = security(syminfo.tickerid, "", low[second_day])
     fday2_range = fday2_h - fday2_l
     ftrue_range_1d = ((((fday1_range+fday2_range)/2)/open[second_day])*100)
     
