@@ -2,7 +2,7 @@
 // Shows asset returns by timeframe. For examplereturns of the asset compared to previous week if time window is set to W (1 week)
 // ** IMPORTART ** Change your chart visibility from daily or any other to weekly to have best view
 // =(B16-D16)/((B16+D16)/2)*100
-study(title='W R (%)', overlay=false)
+study(title='R (%)', overlay=false)
 x1=security(syminfo.tickerid, "", close[0])
 x2=security(syminfo.tickerid, "", close[1])
 x3=(x1 - x2)/((x1 + x2)/2) * 100
