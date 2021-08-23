@@ -3,8 +3,8 @@
 // ** IMPORTART ** Change your chart visibility from daily or any other to weekly to have best view
 // =(B16-D16)/((B16+D16)/2)*100
 study(title='W R (%)', overlay=false)
-x1=security(syminfo.tickerid, "W", close[0])
-x2=security(syminfo.tickerid, "W", close[1])
+x1=security(syminfo.tickerid, "", close[0])
+x2=security(syminfo.tickerid, "", close[1])
 x3=(x1 - x2)/((x1 + x2)/2) * 100
 length=input(title="weeks", type=input.integer, defval=4)
 hline(0)
