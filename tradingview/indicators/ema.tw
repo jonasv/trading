@@ -1,0 +1,10 @@
+// // Exponential Moving Average for 250/120/60 and 20 days
+// // © hydrus2000
+//@version=4
+study("_EMA 250/120/60/20")
+
+
+plot(ema(close, 250), title='250 days', color=#4CE0E2, linewidth=1, style=plot.style_line, transp=50)
+plot(ema(close, 120), title='120 days', color=#7ECF00, linewidth=1, style=plot.style_line, transp=50)
+plot(ema(close, 60), title='60 days', color=#FFF200, linewidth=1, style=plot.style_line, transp=50)
+plot(ema(close, 20), title='20 days', color=#F50202, linewidth=1, style=plot.style_line, transp=50)
