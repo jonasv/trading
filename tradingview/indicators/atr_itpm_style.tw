@@ -1,29 +1,28 @@
-// ATR - ITPM STYLE
-// Made in London, UK @2020
-// Salute to Anton "Morpheus" Kreil for liberaling retail traders!
-// In order for ATR ITPM STYLE to work - you need to select candles (but not heikin ashi ones, because otherwise numbers are incorrect provided by atr)
-// and try to validate results in TW from time to time with excel spreadsheet to make sure numbers are correct.
-// © hydrus2000
 //@version=4
-study("_ATR 10/5/1 (ITPM STYLE)")
+study("_ATR 4y/2y/1y/120/60/20/10/5/1 (ITPM STYLE)", overlay=false)
+hline(0)
 
-// ATR code
-true_range_x(first_day,second_day) =>
-    fday1_h = security(syminfo.tickerid, "", high[first_day])
-    fday1_l = security(syminfo.tickerid, "", low[first_day])
-    fday1_range = fday1_h - fday1_l
-    fday2_h = security(syminfo.tickerid, "", high[second_day])
-    fday2_l = security(syminfo.tickerid, "", low[second_day])
-    fday2_range = fday2_h - fday2_l
-    ftrue_range_1d = ((((fday1_range+fday2_range)/2)/open[second_day])*100)
-    
-days_10_atr = avg(true_range_x(0,1),true_range_x(1,2),true_range_x(2,3),true_range_x(3,4),true_range_x(4,5),true_range_x(5,6),true_range_x(6,7),true_range_x(7,8),true_range_x(8,9),true_range_x(9,10))
-plot(days_10_atr, title='10 days', color=#00FF00, linewidth=1, style=plot.style_line, transp=50)
+true_range_x() =>
+    range = high-low
+    range_n = 100*(range + nz(range[1]))/(2*nz(open[1]))
 
-days_5_atr = avg(true_range_x(0,1),true_range_x(1,2),true_range_x(2,3),true_range_x(3,4),true_range_x(4,5))
-plot(days_5_atr, title='5 days', color=#FFFF00, linewidth=1, style=plot.style_line, transp=50)
+days_1_atr = sma(true_range_x(),1)
+days_5_atr = sma(true_range_x(),5)
+days_10_atr = sma(true_range_x(),10)
+days_20_atr = sma(true_range_x(),20)
+days_60_atr = sma(true_range_x(),60)
+days_120_atr = sma(true_range_x(),120)
+days_250_atr = sma(true_range_x(),250)
+days_500_atr = sma(true_range_x(),500)
+days_1000_atr = sma(true_range_x(),1000)
 
-days_1_atr = true_range_x(0,1)
-plot(days_1_atr, title='1 day', color=#FF0000, linewidth=1, style=plot.style_line, transp=0)
 
-hline(0, linewidth=1)
+plot(days_1000_atr,color=#821c03,title='1000',transp=100)
+plot(days_500_atr,color=#AA2707,title='500',transp=100)
+plot(days_250_atr,color=#F55151,title='250',transp=100)
+plot(days_120_atr,color=#d1d4dc,title='120',transp=50)
+plot(days_60_atr,color=#F56D58,title='60',transp=100)
+plot(days_20_atr,color=#26c6da,title='20',transp=100)
+plot(days_10_atr,color=#00FF00,title='10',transp=50)
+plot(days_5_atr,color=#FFFF00,title='5',transp=50)
+plot(days_1_atr,color=#FF0000,title='1',transp=0)
