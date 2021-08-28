@@ -1,11 +1,11 @@
 //@version=4
-study(title="Historical Volatility", shorttitle="HV 365/30/5", format=format.price, precision=2, resolution="")
+study(title="Historical Volatility", shorttitle="HV 250/20/5", format=format.price, precision=2, resolution="")
 // length = input(5, minval=1)
-annual = 365
+annual = 250
 per = timeframe.isintraday or timeframe.isdaily and timeframe.multiplier == 1 ? 1 : 7
 hv5 = 100 * stdev(log(close / close[1]), 5) * sqrt(annual / per)
-hv30 = 100 * stdev(log(close / close[1]), 30) * sqrt(annual / per)
-hv250 = 100 * stdev(log(close / close[1]), 365) * sqrt(annual / per)
-plot(hv250, "365", color=color.blue, linewidth=2)
-plot(hv30, "30", color=#ff0000, linewidth=2)
+hv30 = 100 * stdev(log(close / close[1]), 20) * sqrt(annual / per)
+hv250 = 100 * stdev(log(close / close[1]), 250) * sqrt(annual / per)
+plot(hv250, "250", color=color.blue, linewidth=2)
+plot(hv30, "20", color=#ff0000, linewidth=2)
 plot(hv5, "5", color=color.white, linewidth=1, transp=85)
