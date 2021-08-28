@@ -6,6 +6,6 @@ per = timeframe.isintraday or timeframe.isdaily and timeframe.multiplier == 1 ? 
 hv5 = 100 * stdev(log(close / close[1]), 5) * sqrt(annual / per)
 hv30 = 100 * stdev(log(close / close[1]), 20) * sqrt(annual / per)
 hv250 = 100 * stdev(log(close / close[1]), 250) * sqrt(annual / per)
-plot(hv250, "250", color=color.blue, linewidth=2)
-plot(hv30, "20", color=#ff0000, linewidth=2)
+plot(hv250, "250", color=color.blue, linewidth=1)
+plot(hv30, "20", color=#ff0000, linewidth=1)
 plot(hv5, "5", color=color.white, linewidth=1, transp=85)
