@@ -1,0 +1,35 @@
+// © hydrus2000
+
+//@version=4
+study("LIBOR")
+hline(0)
+f1=100 - security("GEU2021", "", close[0])
+f2=100 - security("GEV2021", "", close[0])
+f3=100 - security("GEX2021", "", close[0])
+f4=100 - security("GEZ2021", "", close[0])
+f5=100 - security("GEG2022", "", close[0])
+f6=100 - security("GEH2022", "", close[0])
+f7=100 - security("GEM2022", "", close[0])
+f8=100 - security("GEU2022", "", close[0])
+f9=100 - security("GEZ2022", "", close[0])
+f10=100 - security("GEH2023", "", close[0])
+f11=100 - security("GEM2023", "", close[0])
+f12=100 - security("GEU2023", "", close[0])
+f13=100 - security("GEZ2023", "", close[0])
+
+
+
+plot(f13, color=#821c03, title='2022 Dec')
+plot(f12, color=#821c03,title='2022 Sep')
+plot(f11, color=#821c03,title='2022 Jun')
+plot(f10, color=#821c03,title='2023 Mar')
+plot(f9, color=#821c03,title='2022 Dec')
+plot(f8, color=#AA2707,title='2022 Sep')
+plot(f7, color=#F55151,title='2022 Jun')
+plot(f6, color=#d1d4dc,title='2022 Mar')
+plot(f5, color=#F56D58,title='2022 Feb')
+plot(f4, color=#26c6da,title='2021 Dec')
+plot(f3, color=#00FF00,title='2021 Nov')
+plot(f2, color=#FFFF00,title='2021 Oct')
+plot(f1, color=#FF0000,title='2021 Sep')
+
