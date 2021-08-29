@@ -19,9 +19,9 @@ f13=100 - security("GEZ2023", "", close[0])
 
 
 
-plot(f13, color=#821c03, title='2022 Dec')
-plot(f12, color=#821c03,title='2022 Sep')
-plot(f11, color=#821c03,title='2022 Jun')
+plot(f13, color=#821c03, title='2023 Dec')
+plot(f12, color=#821c03,title='2023 Sep')
+plot(f11, color=#821c03,title='2023 Jun')
 plot(f10, color=#821c03,title='2023 Mar')
 plot(f9, color=#821c03,title='2022 Dec')
 plot(f8, color=#AA2707,title='2022 Sep')
