@@ -1,0 +1,24 @@
+// This source code is subject to the terms of the Mozilla Public License 2.0 at https://mozilla.org/MPL/2.0/
+// © hydrus2000
+
+//@version=4
+study("US Treasuries UTB/TB/U10T/10T/5T/2T")
+f1=security("ZT1!", "", close[0]) // 2-Year T-Note
+f2=security("ZF1!", "", close[0]) // 5-Year T-Note
+f3=security("ZN1!", "", close[0]) // 10-Year T-Note
+f4=security("TN1!", "", close[0]) // Ultra 10-Year T-Note
+f5=security("ZB1!", "", close[0]) // Treasury Bond
+f6=security("UB1!", "", close[0]) // Ultra Treasury Bond
+
+
+plot(f6, color=#941919, title='Ultra Treasury Bond')
+plot(f5, color=#ff0000, title='Treasury Bond')
+plot(f4, color=#ef5350, title='Ultra 10-Year T-Note')
+plot(f3, color=#e57373, title='10-Year T-Note')
+plot(f2, color=#ef9a9a, title='5-Year T-Note')
+plot(f1, color=#ffcdd2, title='2-Year T-Note')
+
+
+
+
+
