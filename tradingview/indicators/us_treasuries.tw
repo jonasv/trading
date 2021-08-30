@@ -11,12 +11,12 @@ f5=security("ZB1!", "", close[0]) // Treasury Bond
 f6=security("UB1!", "", close[0]) // Ultra Treasury Bond
 
 
-plot(f6, color=#941919, title='Ultra Treasury Bond')
-plot(f5, color=#ff0000, title='Treasury Bond')
-plot(f4, color=#ef5350, title='Ultra 10-Year T-Note')
-plot(f3, color=#e57373, title='10-Year T-Note')
-plot(f2, color=#ef9a9a, title='5-Year T-Note')
-plot(f1, color=#ffcdd2, title='2-Year T-Note')
+plot(f6, color=#941919, title='Ultra Treasury Bond UB')
+plot(f5, color=#ff0000, title='Treasury Bond ZB')
+plot(f4, color=#ef5350, title='Ultra 10-Year T-Note TN')
+plot(f3, color=#e57373, title='10-Year T-Note ZN')
+plot(f2, color=#ef9a9a, title='5-Year T-Note ZF')
+plot(f1, color=#ffcdd2, title='2-Year T-Note ZT')
 
 
 
