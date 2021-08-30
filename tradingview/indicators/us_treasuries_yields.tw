@@ -2,19 +2,19 @@
 // © hydrus2000
 
 //@version=4
-study("US Treasuries Yields 30Y/20Y/10Y/5Y/2Y")
+study("US Treasuries Yields YS/30Y/20Y/10Y/5Y/2Y")
 hline(0, linestyle=hline.style_dotted, linewidth=1)
 f1=security("US02Y", "", close[0]) // 2-Year Bond Yield
 f2=security("US05Y", "", close[0]) // 5-Year Bond Yield
 f3=security("US10Y", "", close[0]) // 10-Year Bond Yield
 f4=security("US20Y", "", close[0]) // 20-Year Bond Yield
 f5=security("US30Y", "", close[0]) // 30-Year Bond Yield
-f6=security("TVC:US10Y/TVC:US02Y", "", close[0]) // 10-Year Bond Yield / 2-Year Bond Yield
+f6=0.1 * security("TVC:US10Y/TVC:US02Y", "", close[0]) // 10-Year Bond Yield / 2-Year Bond Yield (0.1 is used to make line smaller and does not mean anything, if analyzing properly, just remove 0.1 and leave the rest as it is)
 
-plot(f6, color=#ff0000, title='10Y / 02Y')
+plot(f6, color=#2aad07, title='Yield Spread 10Y / 02Y')
 plot(f5, color=#b71c1c, title='30-Year Bond Yield')
 plot(f4, color=#ef5350, title='20-Year Bond Yield')
-plot(f3, color=#e57373, title='10-Year Bond Yield')
+plot(f3, color=#ff0000, title='10-Year Bond Yield')
 plot(f2, color=#ef9a9a, title='5-Year Bond Yield')
 plot(f1, color=#ffcdd2, title='2-Year Bond Yield')
 
