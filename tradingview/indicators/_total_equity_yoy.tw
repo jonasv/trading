@@ -1,0 +1,9 @@
+//@version=4
+study("Total equity yoy")
+hline(0, linestyle=hline.style_dotted, linewidth=1)
+
+// Revenue YOY
+revenue_yoy_0 = financial(syminfo.tickerid, "TOTAL_EQUITY", "FQ", true)
+revenue_yoy_1 = valuewhen(revenue_yoy_0, revenue_yoy_0, 4)
+revenue_yoy_3 = (revenue_yoy_0 - revenue_yoy_1)/((revenue_yoy_0 + revenue_yoy_1)/2) * 100
+plot(revenue_yoy_3, title='Total equity YOY', color=#c69315, style=plot.style_columns)
