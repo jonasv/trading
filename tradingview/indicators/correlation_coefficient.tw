@@ -22,11 +22,47 @@ look   = input(defval=120,   title="Correlation Lookback Length")
 
 //Securities
 usec1  = input(defval=true,     title="Enable Comparison Security 1")
-sec1in = input(defval="SPX", title="Comparison Security 1")
-usec2  = input(defval=false,    title="Enable Comparison Security 2")
-sec2in = input(defval="NZDUSD", title="Comparison Security 2")
-usec3  = input(defval=false,    title="Enable Comparison Security 3")
-sec3in = input(defval="DXY",    title="Comparison Security 3")
+sec1in = input(defval="SPX", title="Security 1")
+usec2  = input(defval=false,    title="Enable Security 2")
+sec2in = input(defval="NZDUSD", title="Security 2")
+usec3  = input(defval=false,    title="Enable Security 3")
+sec3in = input(defval="DXY",    title="Security 3")
+
+usec4  = input(defval=false,    title="Enable Security 4")
+sec4in = input(defval="DXY",    title="Security 4")
+
+usec5  = input(defval=false,    title="Enable Security 5")
+sec5in = input(defval="DXY",    title="Security 5")
+
+usec6  = input(defval=false,    title="Enable Security 6")
+sec6in = input(defval="DXY",    title="Security 6")
+
+usec7  = input(defval=false,    title="Enable Security 7")
+sec7in = input(defval="DXY",    title="Security 7")
+
+usec8  = input(defval=false,    title="Enable Security 8")
+sec8in = input(defval="DXY",    title="Security 8")
+
+usec9  = input(defval=false,    title="Enable Security 9")
+sec9in = input(defval="DXY",    title="Security 9")
+
+usec10  = input(defval=false,    title="Enable Security 10")
+sec10in = input(defval="DXY",    title="Security 10")
+
+usec11  = input(defval=false,    title="Enable Security 11")
+sec11in = input(defval="DXY",    title="Security 11")
+
+usec12  = input(defval=false,    title="Enable Security 12")
+sec12in = input(defval="DXY",    title="Security 12")
+
+usec13  = input(defval=false,    title="Enable Security 13")
+sec13in = input(defval="DXY",    title="Security 13")
+
+usec14  = input(defval=false,    title="Enable Security 14")
+sec14in = input(defval="DXY",    title="Security 14")
+
+usec15  = input(defval=false,    title="Enable Security 15")
+sec15in = input(defval="DXY",    title="Security 15")
 
 //-----------------------------------------------------------------------------------------------------------------------------------------------------------------
 //Definitions
@@ -42,10 +78,62 @@ sec2  = usec2 ? sec2a : na
 sec3a = security(sec3in, res, close[0])
 sec3  = usec3 ? sec3a : na
 
+sec4a = security(sec4in, res, close[0])
+sec4  = usec4 ? sec4a : na
+
+sec5a = security(sec5in, res, close[0])
+sec5  = usec5 ? sec5a : na
+
+sec6a = security(sec6in, res, close[0])
+sec6  = usec6 ? sec6a : na
+
+sec7a = security(sec7in, res, close[0])
+sec7  = usec7 ? sec7a : na
+
+sec8a = security(sec8in, res, close[0])
+sec8  = usec8 ? sec8a : na
+
+sec9a = security(sec9in, res, close[0])
+sec9  = usec9 ? sec9a : na
+
+sec10a = security(sec10in, res, close[0])
+sec10  = usec10 ? sec10a : na
+
+sec11a = security(sec11in, res, close[0])
+sec11  = usec11 ? sec11a : na
+
+sec12a = security(sec12in, res, close[0])
+sec12  = usec12 ? sec12a : na
+
+sec13a = security(sec13in, res, close[0])
+sec13  = usec13 ? sec13a : na
+
+sec14a = security(sec14in, res, close[0])
+sec14  = usec14 ? sec14a : na
+
+sec15a = security(sec15in, res, close[0])
+sec15  = usec15 ? sec15a : na
+
 //Correlation Coefficient (r)
 r1 = correlation(secm,sec1,look)
 r2 = correlation(secm,sec2,look)
 r3 = correlation(secm,sec3,look)
+
+r4 = correlation(secm,sec4,look)
+r5 = correlation(secm,sec5,look)
+r6 = correlation(secm,sec6,look)
+
+r7 = correlation(secm,sec7,look)
+r8 = correlation(secm,sec8,look)
+r9 = correlation(secm,sec9,look)
+
+r10 = correlation(secm,sec10,look)
+r11 = correlation(secm,sec11,look)
+r12 = correlation(secm,sec12,look)
+
+r13 = correlation(secm,sec13,look)
+r14 = correlation(secm,sec14,look)
+r15 = correlation(secm,sec15,look)
 
 //Axis
 topline = 1
@@ -72,11 +160,43 @@ lplot = plot(lozone,  title="75% Negative Correlation Level",  color=red,  style
 // fill(lplot, bplot, color=fuchsia, title="High Negative Correlation Zone")
 
 //r Plots
-r1plot = plot(r1,color=orange , title="Correlation Coefficient 1", linewidth=2,transp=0)
-r2plot = plot(r2,color=aqua,    title="Correlation Coefficient 2", linewidth=2,transp=0)
-r3plot = plot(r3,color=purple,  title="Correlation Coefficient 3", linewidth=2,transp=0)
+r1plot = plot(r1,color=orange , title="CC 1", linewidth=2,transp=0)
+r2plot = plot(r2,color=aqua,    title="CC 2", linewidth=2,transp=0)
+r3plot = plot(r3,color=purple,  title="CC 3", linewidth=2,transp=0)
+
+r4plot = plot(r4,color=orange , title="CC 4", linewidth=2,transp=0)
+r5plot = plot(r5,color=aqua,    title="CC 5", linewidth=2,transp=0)
+r6plot = plot(r6,color=purple,  title="CC 6", linewidth=2,transp=0)
+
+r7plot = plot(r7,color=orange , title="CC 7", linewidth=2,transp=0)
+r8plot = plot(r8,color=aqua,    title="CC 8", linewidth=2,transp=0)
+r9plot = plot(r9,color=purple,  title="CC 9", linewidth=2,transp=0)
+
+r10plot = plot(r10,color=orange , title="CC 10", linewidth=2,transp=0)
+r11plot = plot(r11,color=aqua,    title="CC 11", linewidth=2,transp=0)
+r12plot = plot(r12,color=purple,  title="CC 12", linewidth=2,transp=0)
+
+r13plot = plot(r13,color=orange , title="CC 13", linewidth=2,transp=0)
+r14plot = plot(r14,color=aqua,    title="CC 14", linewidth=2,transp=0)
+r15plot = plot(r15,color=purple,  title="CC 15", linewidth=2,transp=0)
 
 //r Fills
-fill(r1plot, mplot, color=orange,  transp=50, title="Correlation Coefficient 1 Fill")
-fill(r2plot, mplot, color=aqua,    transp=50, title="Correlation Coefficient 2 Fill")
-fill(r3plot, mplot, color=fuchsia, transp=50, title="Correlation Coefficient 3 Fill")
+fill(r1plot, mplot, color=orange,  transp=50, title="CC 1 Fill")
+fill(r2plot, mplot, color=aqua,    transp=50, title="CC 2 Fill")
+fill(r3plot, mplot, color=fuchsia, transp=50, title="CC 3 Fill")
+
+fill(r4plot, mplot, color=orange,  transp=50, title="CC 4 Fill")
+fill(r5plot, mplot, color=aqua,    transp=50, title="CC 5 Fill")
+fill(r6plot, mplot, color=fuchsia, transp=50, title="CC 6 Fill")
+
+fill(r7plot, mplot, color=orange,  transp=50, title="CC 7 Fill")
+fill(r8plot, mplot, color=aqua,    transp=50, title="CC 8 Fill")
+fill(r9plot, mplot, color=fuchsia, transp=50, title="CC 9 Fill")
+
+fill(r10plot, mplot, color=orange,  transp=50, title="CC 10 Fill")
+fill(r11plot, mplot, color=aqua,    transp=50, title="CC 11 Fill")
+fill(r12plot, mplot, color=fuchsia, transp=50, title="CC 12 Fill")
+
+fill(r13plot, mplot, color=orange,  transp=50, title="CC 13 Fill")
+fill(r14plot, mplot, color=aqua,    transp=50, title="CC 14 Fill")
+fill(r15plot, mplot, color=fuchsia, transp=50, title="CC 15 Fill")
