@@ -7,9 +7,9 @@ hline(0, linestyle=hline.style_dotted, linewidth=1)
 f1=security("TVC:VIX", "", close[0])
 f2=security("VIX3M", "", close[0])
 f3=security("VIX6M", "", close[0])
-f4=f2 / f3 * 20
+f4=f2 / f3 * 15
 
-plot(f4, color=#26c6da, title='test')
+plot(f4, color=#26c6da, title='VIX 3m/6m Spread * 15')
 plot(f3, color=#66bb6a, title='VIX6M')
 plot(f2, color=#fff176, title='VIX3M')
 plot(f1, color=#ff0000, title='VIX')
