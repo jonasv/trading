@@ -1,0 +1,6 @@
+//@version=4
+study("Variance")
+
+length = input(title="Length", defval=20)
+varx = variance(close,length)
+plot(varx,color=#26c6da,style=plot.style_columns,transp=40)
