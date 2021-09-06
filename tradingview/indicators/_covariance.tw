@@ -6,6 +6,7 @@
 // -The step in between periods is the timeframe duration that we are currently viewing.
 // -We change from closing prices to percentage change between the current period and previous one. ( Xn = (Xn - Xn-1)/Xn-1 * 100 )
 study(title="Covariance (% move)")
+hline(0, linestyle=hline.style_dotted, linewidth=1)
 //data input
 securityName1 = input(title="Symbol 1", defval="SP:SPX", confirm=true)
 // securityName2 = input(title="Symbol 2", type=symbol, defval="NASDAQ:AAPL", confirm=true)
@@ -28,6 +29,6 @@ x = (A1 - meanA) * (B1 - meanB)
 sij = 1 / len * sum(x, len)
 //plotting
 
-plot(sij, color=#26c6da, style=plot.style_area, transp=40)
+plot(sij, color=#26c6da, style=plot.style_area, transp=75)
 
 
