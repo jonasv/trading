@@ -5,29 +5,19 @@
 // -For each period we take the closing price.
 // -The step in between periods is the timeframe duration that we are currently viewing.
 // -We change from closing prices to percentage change between the current period and previous one. ( Xn = (Xn - Xn-1)/Xn-1 * 100 )
-study(title="Covariance (% move)")
-//data input
+study(title="Covariance")
+
 securityName1 = input(title="Symbol 1", defval="SP:SPX", confirm=true)
-// securityName2 = input(title="Symbol 2", type=symbol, defval="NASDAQ:AAPL", confirm=true)
 len = input(20, minval=2, title="Length")
 res = timeframe.period
-
-// working on data
-
 A = security(securityName1, res, close)
 B = close
-//changing from absolute prices change to percentage price change
 A1 = (A - A[1]) / A[1] * 100
 B1 = (B - B[1]) / B[1] * 100
-
-//mean of percentage move
 meanA = sma(A1, len)
 meanB = sma(B1, len)
-//covariance calculation
 x = (A1 - meanA) * (B1 - meanB)
 sij = 1 / len * sum(x, len)
-//plotting
-
 plot(sij, color=#26c6da, style=plot.style_area, transp=40)
 
 
