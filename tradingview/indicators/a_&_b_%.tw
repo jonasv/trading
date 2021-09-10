@@ -56,5 +56,5 @@ alpha = ret2 - retb2 * Beta
 plot(alpha, title='Alpha', transp=0, color=#ff00ff)
 plot(Beta, title='Beta', transp=0, color=#ff8000)
 
-hline(0, linewidth=1)
+hline(0, linestyle=hline.style_dotted, linewidth=1)
 
