@@ -1,0 +1,8 @@
+//@version=4
+study("Revenue FQ")
+hline(0, linestyle=hline.style_dotted, linewidth=1)
+
+// Revenue
+revenue = financial(syminfo.tickerid, "TOTAL_REVENUE", "FQ", true)
+
+plot(revenue, title='Revenue', color=#388e3c, style=plot.style_columns)
