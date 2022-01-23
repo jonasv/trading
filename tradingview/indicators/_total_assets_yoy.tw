@@ -1,9 +1,0 @@
-//@version=4
-study("Total assets yoy")
-hline(0, linestyle=hline.style_dotted, linewidth=1)
-
-// Revenue YOY
-revenue_yoy_0 = financial(syminfo.tickerid, "TOTAL_ASSETS", "FQ", true)
-revenue_yoy_1 = valuewhen(revenue_yoy_0, revenue_yoy_0, 4)
-revenue_yoy_3 = (revenue_yoy_0 - revenue_yoy_1)/((revenue_yoy_0 + revenue_yoy_1)/2) * 100
-plot(revenue_yoy_3, title='Total assets YOY', color=#388e3c, style=plot.style_columns)

@@ -1,0 +1,7 @@
+//@version=4
+study("Total assets")
+hline(0, linestyle=hline.style_dotted, linewidth=1)
+
+// Total assets YOY
+total_assets = financial(syminfo.tickerid, "TOTAL_ASSETS", "FQ", true)
+plot(total_assets, title='Total assets', color=#388e3c, style=plot.style_columns)
