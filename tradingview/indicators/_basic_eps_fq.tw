@@ -1,0 +1,8 @@
+//@version=4
+study("Basic EPS")
+hline(0, linestyle=hline.style_dotted, linewidth=1)
+
+// Revenue
+revenue = financial(syminfo.tickerid, "EARNINGS_PER_SHARE_BASIC", "FQ", true)
+
+plot(revenue, title='Basic EPS', color=#3399ff, style=plot.style_columns)
