@@ -1,0 +1,7 @@
+//@version=4
+study("Total equity")
+hline(0, linestyle=hline.style_dotted, linewidth=1)
+
+// Total equity
+total_equity = financial(syminfo.tickerid, "TOTAL_EQUITY", "FQ", true)
+plot(total_equity, title='Total equity', color=#c69315, style=plot.style_columns)
