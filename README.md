@@ -1,2 +1,1 @@
-# trading
-Everything related to trading
+# "The most well hidden things in this life are invisible"
