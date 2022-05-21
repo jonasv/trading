@@ -6,5 +6,5 @@ PriceEarningsRatioCurrent = close / EPS
 
 PriceEarningsRatioCurrentX = input(defval=100, title="Expected Price") / EPS
 
-plot(PriceEarningsRatioCurrentX, "X", color.new(color=#ffeb3b, transp=100), linewidth = 1)
-plot(PriceEarningsRatioCurrent, "Current", color.new(color=#2196f3, transp=0), linewidth = 1)
+plot(PriceEarningsRatioCurrentX, "X", color.new(color=#ffeb3b, transp=100), linewidth = 2)
+plot(PriceEarningsRatioCurrent, "Current", color.new(color=#2196f3, transp=0), linewidth = 2)
