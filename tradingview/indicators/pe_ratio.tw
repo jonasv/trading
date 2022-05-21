@@ -1,0 +1,10 @@
+//@version=5
+indicator("PE ratio X/C", overlay=false) // Expected / Current
+
+EPS = request.financial(syminfo.tickerid, "EARNINGS_PER_SHARE", "TTM")
+PriceEarningsRatioCurrent = close / EPS
+
+PriceEarningsRatioCurrentX = input(defval=100, title="Expected Price") / EPS
+
+plot(PriceEarningsRatioCurrentX, "X", color=#ff0000, linewidth=2)
+plot(PriceEarningsRatioCurrent, "Current", color=#2196f3, linewidth=2)
