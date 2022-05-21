@@ -1,5 +1,6 @@
 //@version=5
 indicator("PE ratio X/C", overlay=false) // Expected / Current
+hline(0, linestyle=hline.style_dotted, linewidth=1)
 
 EPS = request.financial(syminfo.tickerid, "EARNINGS_PER_SHARE", "TTM")
 PriceEarningsRatioCurrent = close / EPS
