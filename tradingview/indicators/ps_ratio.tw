@@ -1,0 +1,14 @@
+//@version=5
+indicator("PS ratio X/C", overlay=false) // Expected / Current
+hline(0, linestyle=hline.style_dotted, linewidth=1)
+
+TSO = request.financial(syminfo.tickerid, "TOTAL_SHARES_OUTSTANDING", "FQ")
+TR = request.financial(syminfo.tickerid, "TOTAL_REVENUE", "TTM")
+MarketCap = TSO * close
+PriseSalesRatioCurrent = MarketCap / TR
+
+MarketCapX = TSO * input(defval=100, title="Expected Price")
+PriseSalesRatioCurrentX = MarketCapX / TR
+
+plot(PriseSalesRatioCurrentX, "Current", color.new(color=#ffeb3b, transp=100), linewidth = 2)
+plot(PriseSalesRatioCurrent, "Current", color.new(color=#26c6da, transp=0), linewidth = 2)
