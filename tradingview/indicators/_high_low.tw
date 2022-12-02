@@ -1,13 +1,13 @@
-// Shows highest, close and lowest of the day
+// Shows highest and lowest of the day
 // © hydrus2000
 
-//@version=3
+//@version=4
 hiHighs = highest(1)
 loLows  = lowest(1)
+spread = hiHighs - loLows
 
 plot( hiHighs , title="high", color=#00ff00)
-plot(close[0], title="close", color=#FFFF00)
 plot( loLows, title="low", color=#ff0000)
+plot( spread, title="spread", color=color.yellow)
 
-
-study("H/C/L")
+study("H/L/S")
